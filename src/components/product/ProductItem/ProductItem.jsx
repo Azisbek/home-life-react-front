@@ -11,8 +11,10 @@ export const ProductItem = ({ data }) => {
   const navigate = useNavigate();
   const { title, avg_rating, price, id, images } = data;
 
+  console.log(id);
+
   const openProductHandler = () => {
-    navigate(`${ROUTE}/${id}`);
+    navigate(`${ROUTE.catalog}/${id}`);
   };
 
   return (
