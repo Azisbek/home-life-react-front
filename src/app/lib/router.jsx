@@ -4,6 +4,8 @@ import { Layout } from "../layouts/Layout";
 import { HomePage } from "../../page/home";
 import { Catalog } from "../../page/catalog";
 import { ProductPage } from "../../page/product-page";
+import { SignIn } from "../../page/sign-in";
+import { SignUp } from "../../page/sign-up";
 
 export const router = createBrowserRouter([
   {
@@ -12,11 +14,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: ROUTE.signIn,
-        element: <h1>Login</h1>,
+        element: <SignIn />,
       },
       {
         path: ROUTE.signUp,
-        element: <h1>Registration</h1>,
+        element: <SignUp />,
       },
       {
         path: ROUTE.home,

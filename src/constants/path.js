@@ -5,4 +5,6 @@ export const ROUTE = {
   signIn: "/sign-in",
   signUp: "/sign-up",
   basket: "/basket",
+  about: "/about",
+  contacts: "/contacts",
 };

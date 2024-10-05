@@ -1,0 +1,15 @@
+.containerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.containerHeader {
+  padding-top: 20px;
+  padding-bottom: 50px;
+
+  .logo {
+    width: 182px;
+  }
+}
