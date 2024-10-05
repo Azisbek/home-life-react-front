@@ -1,0 +1,43 @@
+.skeleton {
+  width: 1020px;
+  height: 320px;
+  padding: 16px;
+  border: 1px solid #eaeaea;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.containerBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.skeleton1 {
+  background-color: rgb(153, 153, 153);
+  height: 150px;
+  border-radius: 5px;
+}
+
+.title {
+  width: 195px;
+  background-color: rgb(153, 153, 153);
+  height: 25px;
+  border-radius: 5px;
+}
+
+.rating {
+  width: 150px;
+  background-color: rgb(153, 153, 153);
+  height: 25px;
+  border-radius: 5px;
+}
+
+.skeleton2 {
+  height: 39px;
+  background-color: rgb(153, 153, 153);
+  border-radius: 5px;
+}

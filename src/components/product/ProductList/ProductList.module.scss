@@ -1,0 +1,18 @@
+.containerProduct {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 2fr));
+  justify-content: center;
+  gap: 10px;
+}
+
+.containerProductMobile {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 5px;
+  justify-items: center;
+  width: 100%;
+}
+
+.container {
+  width: 100%;
+}

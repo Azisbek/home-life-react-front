@@ -1,0 +1,15 @@
+@import url("./font.scss");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat";
+}
+
+.container {
+  max-width: 1253px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}

@@ -1,0 +1,17 @@
+.bullet {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: rgb(210, 210, 209);
+}
+
+.bulletContainer {
+  display: flex;
+  column-gap: 10px;
+  justify-content: center;
+}
+
+.active {
+  background: rgb(250, 213, 73);
+}
