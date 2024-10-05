@@ -1,0 +1,41 @@
+.container {
+  max-width: 364px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: rgb(29, 29, 26);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 24px;
+  padding-bottom: 22px;
+}
+
+.blockList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  color: rgb(74, 74, 72);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 17px;
+}
+
+@media only screen and (max-width: 768px) {
+  .title {
+    color: rgb(29, 29, 26);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+  }
+
+  .blockList li {
+    color: rgb(74, 74, 72);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+  }
+}

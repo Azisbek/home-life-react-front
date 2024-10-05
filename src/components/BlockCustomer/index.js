@@ -1,0 +1,1 @@
+export { BlockCustomer } from "./BlockCustomer";

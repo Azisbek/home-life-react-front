@@ -1,0 +1,51 @@
+.blockCustomer {
+  margin-bottom: 20px;
+
+  .containeCastomer {
+    padding: 30px;
+    border: 0.5px solid rgb(210, 210, 209);
+    border-radius: 10px;
+
+    .block {
+      display: flex;
+      justify-content: space-between;
+
+      .name {
+        color: rgb(29, 29, 26);
+        font-size: 16px;
+        display: flex;
+        font-weight: 500;
+        line-height: 23px;
+      }
+    }
+
+    .date {
+      color: rgb(74, 74, 72);
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 17px;
+    }
+
+    .reviewes {
+      margin-bottom: 20px;
+    }
+
+    .blockButton {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      gap: 10px;
+
+      .button {
+        color: rgb(79, 104, 255);
+        background-color: white;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 17px;
+        border: 0;
+        border-bottom: 1px solid #4f68ff;
+        cursor: pointer;
+      }
+    }
+  }
+}
