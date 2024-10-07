@@ -1,6 +1,6 @@
 import { clsx } from "clsx";
 
-import s from "./Input.module.css";
+import s from "./Input.module.scss";
 
 export const Input = ({
   isError,
