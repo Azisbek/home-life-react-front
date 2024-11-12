@@ -6,6 +6,7 @@ import { Catalog } from "../../page/catalog";
 import { ProductPage } from "../../page/product-page";
 import { SignIn } from "../../page/sign-in";
 import { SignUp } from "../../page/sign-up";
+import { Order } from "../../page/Order";
 
 export const router = createBrowserRouter([
   {
@@ -20,6 +21,7 @@ export const router = createBrowserRouter([
         path: ROUTE.signUp,
         element: <SignUp />,
       },
+      
       {
         path: ROUTE.home,
         element: <HomePage />,
@@ -36,11 +38,14 @@ export const router = createBrowserRouter([
       // Authorized Pages
 
       {
-        element: <h1>Redirect</h1>,
         children: [
           {
             path: ROUTE.basket,
             element: <h1>Basket</h1>,
+          },
+          {
+            path: ROUTE.order,
+            element: <Order/>,
           },
         ],
       },

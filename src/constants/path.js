@@ -7,4 +7,5 @@ export const ROUTE = {
   basket: "/basket",
   about: "/about",
   contacts: "/contacts",
+  order:"/order"
 };

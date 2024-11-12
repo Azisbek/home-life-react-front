@@ -7,6 +7,7 @@ import {
   useGetFilterColorQuery,
 } from "../../api/FilterValueCatalogApi";
 import { useDispatch } from "react-redux";
+import { AppButton } from "../../../../components/ui/Button";
 import { setFilter, resetFilters } from "../filter-catalog/model/filter.slice";
 
 export const FilterProduct = () => {
@@ -69,8 +70,8 @@ export const FilterProduct = () => {
         ref={priceMaxRef}
         name='price_max'
       />
-      <button onClick={handleApplyFilters}>Применить</button>
-      <button onClick={() => resetFilters()}>Сбросить</button>
+      <AppButton onClick={handleApplyFilters}>Применить</AppButton>
+      <AppButton onClick={() => resetFilters()}>Сбросить</AppButton>
     </div>
   );
 };
