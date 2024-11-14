@@ -19,6 +19,7 @@ export const FilterSelect = ({ options, onChange, className, name, defaultValue 
         <option key={index} value={option.value}>
           {option.label}
         </option>
+        
       ))}
     </select>
   );
