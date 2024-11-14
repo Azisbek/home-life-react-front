@@ -5,26 +5,27 @@ import { Search } from "../../../assets/icon/Search";
 
 import clsx from "clsx";
 import s from "./Header.module.scss";
-import { useGetSearchProductQuery } from "../api/searchApi/SearchApi";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setFilter } from "../../../widgets/catalog-widget/components/filter-catalog/model/filter.slice";
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "../../../constants/path";
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-  const [data, setData] = useState({});
-  const { refetch } = useGetSearchProductQuery(data, {
-    refetchOnMountOrArgChange: true,
-  });
 
   const searchChangeHandler = (e) => {
     const title = e.target.value;
     setSearch(title);
   };
 
-  const handleSearchHandler = () => {
-    setData({
-      search: search,
-    });
-    refetch();
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      dispatch(setFilter({ key: "search", value: search }));
+      navigate(ROUTE.catalog);
+    }
   };
 
   return (
@@ -37,7 +38,7 @@ export const Header = () => {
         value={search}
         onChange={searchChangeHandler}
         rightIcon={<Search />}
-        rightOnClick={handleSearchHandler}
+        onKeyDown={handleKeyDown}
       />
 
       <AppNavigateHeader />

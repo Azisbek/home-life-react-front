@@ -39,6 +39,17 @@ export const FilterProduct = () => {
     dispatch(setFilter({ key: "price_max", value: priceMax }));
   };
 
+  const handleResetFilters = () => {
+    setFilters({
+      category: "",
+      color: "",
+      brand: "",
+      priceMin: "",
+      priceMax: "",
+    });
+    dispatch(resetFilters());
+  };
+
   return (
     <div className={s.filterContainer}>
       <FilterSelect
@@ -70,7 +81,7 @@ export const FilterProduct = () => {
         name='price_max'
       />
       <button onClick={handleApplyFilters}>Применить</button>
-      <button onClick={() => resetFilters()}>Сбросить</button>
+      <button onClick={handleResetFilters}>Сбросить</button>
     </div>
   );
 };
