@@ -1,0 +1,27 @@
+.containerList {
+  margin-bottom: 90px;
+
+  .title {
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 34px;
+  }
+
+  .containerBlock {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 10px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    @media screen and (max-width: 1006px) {
+      flex-direction: column-reverse;
+    }
+  }
+
+  .productList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

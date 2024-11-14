@@ -9,9 +9,7 @@ import { ROUTE } from "../../../constants/path";
 
 export const ProductItem = ({ data }) => {
   const navigate = useNavigate();
-  const { title, avg_rating, price, id, images } = data;
-
-  console.log(id);
+  const { title, avg_rating, price, promotion, id, images } = data;
 
   const openProductHandler = () => {
     navigate(`${ROUTE.catalog}/${id}`);
@@ -35,7 +33,7 @@ export const ProductItem = ({ data }) => {
 
         <div className={s.information}>
           <p className={s.title}>{title}</p>
-          <p className={s.price}>{price} som</p>
+          <p className={s.price}>{promotion ? promotion : price} сом</p>
         </div>
 
         <AppButton onClick={openProductHandler} variant='button'>

@@ -7,15 +7,12 @@ import { Paper } from "../../../components/ui/Paper";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../../constants/path";
 import { Space } from "../../../components/ui/Space/Space";
+import { useSignUp } from "../../../hooks/useSignUp";
 
 export const SignUp = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    number: "",
-    gender: "",
-    age: null,
-  });
+  //TODO add error text and loading
+  // eslint-disable-next-line no-unused-vars
+  const { authResponse, errorText, setForm, onSubmit } = useSignUp();
   const [password, setPassword] = useState(false);
 
   const passwordHandler = () => {
@@ -23,20 +20,15 @@ export const SignUp = () => {
   };
 
   const inputChangeHandler = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
+    const { name, value, type, checked } = e.target;
+    setForm((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const selectChange = (filterKey) => (value) => {
-    setFormData((prev) => ({ ...prev, [filterKey]: value }));
-  };
-
-  const formChangeHandler = (e) => {
-    e.preventDefault();
-    console.log(formData);
+    setForm((prev) => ({ ...prev, [filterKey]: value }));
   };
 
   return (
@@ -49,38 +41,41 @@ export const SignUp = () => {
         </p>
       </div>
       <Space h={30} />
-      <form onSubmit={formChangeHandler} className={s.form}>
+      <form onSubmit={onSubmit} className={s.form}>
         <Paper className={s.paper}>
           <Input
-            name="name"
-            placeholder="Ваше Имя*"
+            name='name'
+            placeholder='Ваше Имя*'
             onChange={inputChangeHandler}
           />
           <Input
-            name="email"
-            placeholder="Ваш Email*"
-            type="email"
+            name='username'
+            placeholder='Имя пользователя*'
             onChange={inputChangeHandler}
           />
           <Input
-            name="number"
-            value={formData.number}
+            name='email'
+            placeholder='Ваш Email*'
+            type='email'
             onChange={inputChangeHandler}
-            placeholder="Ваш номер*"
-            type="number"
           />
           <Input
-            name="password"
+            name='number'
+            onChange={inputChangeHandler}
+            placeholder='Ваш номер*'
+            type='number'
+          />
+          <Input
+            name='password'
             type={password ? "password" : "text"}
             rightOnClick={passwordHandler}
             onChange={inputChangeHandler}
-            placeholder="Ваш пароль*"
+            placeholder='Ваш пароль*'
           />
           <div className={s.smallForm}>
             <FilterSelect
               className={s.select}
-              defaultValue="Выберите пол"
-              value={formData.gender || ""} 
+              defaultValue='Выберите пол'
               onChange={selectChange("gender")}
               options={[
                 { value: "1", label: "Мужской" },
@@ -88,14 +83,21 @@ export const SignUp = () => {
               ]}
             />
             <Input
-              name="age"
-              value={formData.age} 
+              name='age'
               onChange={inputChangeHandler}
-              type="number"
-              placeholder="Возраст"
+              type='number'
+              placeholder='Возраст'
             />
+            <div className={s.checkboxContainer}>
+              <input
+                type='checkbox'
+                name='wholesaler'
+                onChange={inputChangeHandler}
+              />
+              <label className={s.checkboxLabel}>Я оптовый покупатель</label>
+            </div>
           </div>
-          <AppButton className={s.btnSignUp} variant="button">
+          <AppButton className={s.btnSignUp} variant='button'>
             Зарегистрироваться
           </AppButton>
         </Paper>

@@ -2,9 +2,25 @@ import { Rating } from "react-simple-star-rating";
 import { SwipeImage } from "../../../../components/SwipeImage/SwipeImage";
 import s from "./ViewProduct.module.scss";
 import { AppButton } from "../../../../components/ui/Button";
+import { useAddProductBasketMutation } from "./api";
+import { Counter } from "../../../../components/ui/Counter/Counter";
+import { Space } from "../../../../components/ui/Space/Space";
+import { useState } from "react";
 
 export const ViewProduct = ({ data }) => {
-  console.log(data);
+  const [quantity, setQuantity] = useState(1);
+  const [addProductBasket] = useAddProductBasketMutation();
+
+  const handleAddToBasket = () => {
+    if (data) {
+      const basketData = {
+        product: data.id,
+        quantity,
+      };
+      addProductBasket(basketData);
+    }
+  };
+
   return (
     <div className={s.container}>
       <h3>Просмотр товара</h3>
@@ -24,8 +40,15 @@ export const ViewProduct = ({ data }) => {
           <div className={s.color}>
             <div style={{ background: data?.color.key }} />
           </div>
-          <p>{data?.price}</p>
-          <AppButton className={s.button} variant='button'>
+          <p>{data?.promotion ? data.promotion : data?.price}</p>
+          <Space h={30} />
+          <Counter add={quantity} setAdd={setQuantity} />
+          <Space h={40} />
+          <AppButton
+            onClick={handleAddToBasket}
+            className={s.button}
+            variant='button'
+          >
             Добавить в корзину
           </AppButton>
         </div>
