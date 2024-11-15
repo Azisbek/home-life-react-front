@@ -3,12 +3,15 @@ import { Input } from "../../../components/ui/Input";
 import logo from "../../../assets/Logo.png";
 import { Search } from "../../../assets/icon/Search";
 
+import { Space } from "../../ui/Space/Space";
 import clsx from "clsx";
 import s from "./Header.module.scss";
 import { useGetSearchProductQuery } from "../api/searchApi/SearchApi";
 import { useState } from "react";
+import { useScreenWidth } from "../../../hooks/useScreenWidth";
 
 export const Header = () => {
+  const {isMobail} = useScreenWidth()
   const [search, setSearch] = useState("");
   const [data, setData] = useState({});
   const { refetch } = useGetSearchProductQuery(data, {
@@ -32,7 +35,7 @@ export const Header = () => {
       <div>
         <img src={logo} alt='logo' className={s.logo} />
       </div>
-
+      
       <Input
         value={search}
         onChange={searchChangeHandler}

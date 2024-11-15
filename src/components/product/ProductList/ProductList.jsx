@@ -12,7 +12,6 @@ export const ProductList = ({ data }) => {
     ) : (
       <>
         <ProductItem data={product} key={`${index} ${product.title}`} />
-        <ProductItem data={product} key={`${index} ${product.title}`} />
       </>
     );
   };
