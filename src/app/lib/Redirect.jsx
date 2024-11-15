@@ -1,12 +1,13 @@
-import { Navigate } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { ROUTE } from "../../constants/path";
+import TokenService from "../../model/TokenService";
 
-export function Redirect({ children }) {
-  //   const location = useLocation();
-  const user = true;
+export function Redirect() {
+  const access = TokenService.getToken();
 
-  if (!user) {
-    <Navigate to={ROUTE.signIn} />;
+  if (!access) {
+    return <Navigate to={ROUTE.signIn} />;
   }
-  return children;
+
+  return <Outlet />;
 }

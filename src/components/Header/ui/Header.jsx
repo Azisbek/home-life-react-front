@@ -6,41 +6,41 @@ import { Search } from "../../../assets/icon/Search";
 import { Space } from "../../ui/Space/Space";
 import clsx from "clsx";
 import s from "./Header.module.scss";
-import { useGetSearchProductQuery } from "../api/searchApi/SearchApi";
 import { useState } from "react";
 import { useScreenWidth } from "../../../hooks/useScreenWidth";
+import { useDispatch } from "react-redux";
+import { setFilter } from "../../../widgets/catalog-widget/components/filter-catalog/model/filter.slice";
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "../../../constants/path";
 
 export const Header = () => {
-  const {isMobail} = useScreenWidth()
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [search, setSearch] = useState("");
-  const [data, setData] = useState({});
-  const { refetch } = useGetSearchProductQuery(data, {
-    refetchOnMountOrArgChange: true,
-  });
 
   const searchChangeHandler = (e) => {
     const title = e.target.value;
     setSearch(title);
   };
 
-  const handleSearchHandler = () => {
-    setData({
-      search: search,
-    });
-    refetch();
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      dispatch(setFilter({ key: "search", value: search }));
+      navigate(ROUTE.catalog);
+    }
   };
 
   return (
     <header className={clsx("container", s.containerHeader)}>
       <div>
-        <img src={logo} alt='logo' className={s.logo} />
+        <img src={logo} alt="logo" className={s.logo} />
       </div>
-      
+
       <Input
         value={search}
         onChange={searchChangeHandler}
         rightIcon={<Search />}
-        rightOnClick={handleSearchHandler}
+        onKeyDown={handleKeyDown}
       />
 
       <AppNavigateHeader />

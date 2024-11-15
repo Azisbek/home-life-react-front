@@ -11,7 +11,7 @@
 .image {
   width: 326px;
   height: 359px;
-  object-fit: cover;
+  object-fit: contain;
   animation: animated-smooth 0.5s;
 }
 

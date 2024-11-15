@@ -10,9 +10,7 @@ export const ProductList = ({ data }) => {
     return isMobile ? (
       <ProductItemMobile data={product} key={`${index} ${product.title}`} />
     ) : (
-      <>
-        <ProductItem data={product} key={`${index} ${product.title}`} />
-      </>
+      <ProductItem data={product} key={`${index} ${product.title}`} />
     );
   };
 
