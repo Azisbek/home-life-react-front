@@ -7,14 +7,14 @@ import clsx from "clsx";
 
 export const ProductCatalog = () => {
   const filters = useSelector((state) => state.filters);
-  const { data } = useGetCatalogProductQuery(filters, {
+  const { data, isLoading } = useGetCatalogProductQuery(filters, {
     refetchOnMountOrArgChange: true,
   });
 
   return (
     <div className={clsx(s.container)}>
       <FilterProduct />
-      <ProductList data={data?.results} />
+      <ProductList loading={isLoading} data={data?.results} />
     </div>
   );
 };

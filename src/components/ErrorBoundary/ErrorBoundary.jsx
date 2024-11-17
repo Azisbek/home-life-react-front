@@ -1,9 +1,10 @@
+import s from "./ErrorBoundary.module.scss";
+
 export default function CustomErrorBoundary() {
   return (
-    <div style={{ padding: "1rem", textAlign: "center" }}>
-      <h1>Ошибка авторизации</h1>
-      <p>Вы не авторизованы. Пожалуйста, войдите в систему.</p>
-      <p style={{ color: "red" }}>Error</p>
+    <div className={s.container}>
+      <h1>Ошибка 404</h1>
+      <p>Возможно, запрошенная страница временно недоступона или удалена.</p>
     </div>
   );
 }

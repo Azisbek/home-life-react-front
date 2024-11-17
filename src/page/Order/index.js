@@ -1,1 +1,2 @@
-export {Order} from "./ui/Order"
+import { Order } from "./ui/Order";
+export default Order;

@@ -2,13 +2,21 @@ import { HomeList } from "../../../widgets/home-widget/components/HomeList/HomeL
 import { useGetHomeProductQuery } from "../api";
 
 export const HomePage = () => {
-  const { data } = useGetHomeProductQuery();
+  const { data, isLoading } = useGetHomeProductQuery();
 
   return (
     <>
-      <HomeList title='Новинки' data={data?.homepage.new} />
-      <HomeList title='Популярные' data={data?.homepage.popular} />
-      <HomeList title='Акции' data={data?.homepage.promotion} />
+      <HomeList loading={isLoading} title='Новинки' data={data?.homepage.new} />
+      <HomeList
+        loading={isLoading}
+        title='Популярные'
+        data={data?.homepage.popular}
+      />
+      <HomeList
+        loading={isLoading}
+        title='Акции'
+        data={data?.homepage.promotion}
+      />
     </>
   );
 };

@@ -13,21 +13,26 @@ export async function authLoader() {
   const access = TokenStorageService.getToken();
 
   try {
-    if (!access) throwUnauthorizedError();
+    if (!access) {
+      console.error("Токен отсутствует");
+      throwUnauthorizedError();
+    }
 
     const { data } = await store.dispatch(
       signInApi.endpoints.refresh.initiate({ access })
     );
 
     if (data && data.access) {
+      console.log("Токен успешно обновлён");
       TokenStorageService.setToken(data.access);
     } else {
+      console.error("Ошибка при обновлении токена", data);
       throwUnauthorizedError();
     }
 
     return await meLoader();
   } catch (e) {
-    console.error("Error during authLoader:", e);
+    console.error("Ошибка в authLoader:", e);
     TokenStorageService.clearToken();
     return redirect(ROUTE.home);
   }
