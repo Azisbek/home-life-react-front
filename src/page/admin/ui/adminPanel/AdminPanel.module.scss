@@ -1,0 +1,39 @@
+.admin_panel {
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(128, 128, 128, 0.151);
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 10px;
+      transition: 0.2s;
+      border-radius: 10px;
+      font-size: 14px;
+      color: rgba(255, 255, 255, 1);
+      font-weight: 400;
+      text-decoration: none;
+      line-height: 17.07px;
+      span {
+        font-size: 24px;
+      }
+    }
+    a:hover {
+      background: rgba(50, 50, 50, 1);
+    }
+    .activeLink {
+      font-weight: bold;
+      background: rgba(50, 50, 50, 1);
+      color: rgba(250, 213, 73, 1);
+    }
+  }
+}

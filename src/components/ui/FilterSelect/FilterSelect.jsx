@@ -12,7 +12,7 @@ export const FilterSelect = ({ options, onChange, className, name, defaultValue 
       className={clsx(s.select, className)}
       onChange={handleChange}
     >
-      <option selected value="" disabled>
+      <option selected value="" disabled >
         {defaultValue}
       </option>
       {options.map((option, index) => (
