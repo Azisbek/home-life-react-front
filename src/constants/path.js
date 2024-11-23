@@ -9,4 +9,12 @@ export const ROUTE = {
   contacts: "/contacts",
   order: "/order",
   profile: "/profile",
+  admin: "/admin",
+  addNews: "/admin/addNews",
+  addProducts: "/admin/addProducts",
+  addShares: "/admin/addShares",
+  allNews: "/admin/allNews",
+  allProducts: "/admin/allProducts",
+  allShares: "/admin/allShares",
+  applications: "/admin/applications"
 };
