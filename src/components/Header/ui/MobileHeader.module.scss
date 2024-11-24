@@ -1,0 +1,52 @@
+.containerHeader {
+  width: 100%;
+
+  .logo {
+    width: 129px;
+    height: 49px;
+  }
+
+  .headerSearch {
+    display: flex;
+    gap: 10px;
+
+    .containerInput {
+      width: 100%;
+    }
+
+    .burger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 3px;
+      border: 0.5px solid rgb(119, 119, 118);
+      border-radius: 6px;
+      width: 42px;
+      height: 46px;
+
+      span {
+        width: 24px;
+        border: 2px solid rgb(79, 104, 255);
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+.navigateMobileContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px;
+
+  p {
+    color: rgb(29, 29, 26);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    border-bottom: 0.5px solid rgb(165, 165, 163);
+    cursor: pointer;
+  }
+}

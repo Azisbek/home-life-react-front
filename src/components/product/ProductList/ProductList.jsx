@@ -5,11 +5,11 @@ import s from "./ProductList.module.scss";
 import { ProductSkeleton } from "../../ui/ProductSkeleton/DesktopSkeleton";
 import { MobileSkeleton } from "../../ui/ProductSkeleton/MobileSkeleton";
 
-export const ProductList = ({ data, loading }) => {
+export const ProductList = ({ data, loading, quantitySkeleton }) => {
   const { isMobile } = useScreenWidth();
 
   const renderSkeletons = () =>
-    Array.from({ length: 5 }, (_, i) =>
+    Array.from({ length: quantitySkeleton }, (_, i) =>
       isMobile ? <MobileSkeleton key={i} /> : <ProductSkeleton key={i} />
     );
 

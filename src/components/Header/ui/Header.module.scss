@@ -1,12 +1,20 @@
 .containerHeader {
+  padding-top: 20px;
+  padding-bottom: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-wrap: wrap;
-  padding-top: 20px;
-  padding-bottom: 50px;
+  gap: 45px;
 
   .logo {
     width: 182px;
+  }
+
+  .containerInput {
+    width: 100%;
+
+    input {
+      width: 100%;
+    }
   }
 }

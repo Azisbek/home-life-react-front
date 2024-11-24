@@ -78,8 +78,8 @@ export const SignUp = () => {
               defaultValue='Выберите пол'
               onChange={selectChange("gender")}
               options={[
-                { value: "1", label: "Мужской" },
-                { value: "2", label: "Женский" },
+                { value: "men", label: "Мужской" },
+                { value: "woman", label: "Женский" },
               ]}
             />
             <Input

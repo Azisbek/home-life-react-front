@@ -5,7 +5,7 @@ export const HomeList = ({ data, title, loading }) => {
   return (
     <div className={s.containerHomeProduct}>
       <h3>{title}</h3>
-      <ProductList data={data} loading={loading} />
+      <ProductList data={data} loading={loading} quantitySkeleton={5} />
     </div>
   );
 };

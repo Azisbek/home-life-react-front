@@ -40,16 +40,16 @@ export const FilterProduct = () => {
     dispatch(setFilter({ key: "price_max", value: priceMax }));
   };
 
-  const handleResetFilters = () => {
-    setFilters({
-      category: "",
-      color: "",
-      brand: "",
-      priceMin: "",
-      priceMax: "",
-    });
-    dispatch(resetFilters());
-  };
+  // const handleResetFilters = () => {
+  //   setFilters({
+  //     category: "",
+  //     color: "",
+  //     brand: "",
+  //     priceMin: "",
+  //     priceMax: "",
+  //   });
+  //   dispatch(resetFilters());
+  // };
 
   return (
     <div className={s.filterContainer}>

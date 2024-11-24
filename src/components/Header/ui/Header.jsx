@@ -34,12 +34,14 @@ export const Header = () => {
         <img src={logo} alt='logo' className={s.logo} />
       </div>
 
-      <Input
-        value={search}
-        onChange={searchChangeHandler}
-        rightIcon={<Search />}
-        onKeyDown={handleKeyDown}
-      />
+      <div className={s.containerInput}>
+        <Input
+          value={search}
+          onChange={searchChangeHandler}
+          rightIcon={<Search />}
+          onKeyDown={handleKeyDown}
+        />
+      </div>
 
       <AppNavigateHeader />
 

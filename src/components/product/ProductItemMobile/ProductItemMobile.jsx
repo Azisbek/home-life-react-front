@@ -1,6 +1,5 @@
 import { Rating } from "react-simple-star-rating";
 
-import { SwiperBullet } from "../../ui/Swiper_bullet";
 import { AppButton } from "../../ui/Button";
 
 import s from "./ProductItemMobile.module.scss";
@@ -20,7 +19,6 @@ export const ProductItemMobile = ({ data }) => {
       <div className={s.blockImg}>
         <img src={images[0]} alt='product' />
       </div>
-      <SwiperBullet count={3} num={1} />
       <div className={s.contentProductCart}>
         <div className={s.starTitleContainer}>
           <Rating
