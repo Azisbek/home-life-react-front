@@ -38,7 +38,7 @@ const AddProductPage = () => {
           />
           <Input placeholder="Акция 2" className={s.input} />
         </div>
-        <span className={s.addShare} onClick={() => setShowShareFields(true)}>
+        <span className={s.addShare} onClick={() => setShowShareFields(!showShareFields)}>
           Добавить акцию
         </span>
       </div>

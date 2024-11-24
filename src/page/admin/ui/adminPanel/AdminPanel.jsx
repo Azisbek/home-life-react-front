@@ -30,15 +30,6 @@ const AdminPanel = () => {
           </span>
         </NavLink>
         <NavLink
-          to={ROUTE.addShares}
-          className={({ isActive }) => (isActive ? s.activeLink : "")}
-        >
-          Добавить акции
-          <span>
-            <BiPurchaseTag />
-          </span> 
-        </NavLink>
-        <NavLink
           to={ROUTE.applications}
           className={({ isActive }) => (isActive ? s.activeLink : "")}
         >
@@ -52,24 +43,6 @@ const AdminPanel = () => {
           className={({ isActive }) => (isActive ? s.activeLink : "")}
         >
           Все товары
-          <span>
-            <PiShoppingCartSimpleBold />
-          </span>
-        </NavLink>
-        <NavLink
-          to={ROUTE.allNews}
-          className={({ isActive }) => (isActive ? s.activeLink : "")}
-        >
-          Все новости
-          <span>
-            <PiShoppingCartSimpleBold />
-          </span>
-        </NavLink>
-        <NavLink
-          to={ROUTE.allShares}
-          className={({ isActive }) => (isActive ? s.activeLink : "")}
-        >
-          Все акции
           <span>
             <PiShoppingCartSimpleBold />
           </span>
