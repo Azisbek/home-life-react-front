@@ -13,5 +13,5 @@ export const ROUTE = {
   addProducts: "/admin/add-products",
   addNews: "/admin/add-news",
   allProducts: "/admin/all-products",
-  applications: "/admin/applications"
+  applications: "/admin/applications",
 };

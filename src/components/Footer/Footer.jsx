@@ -31,7 +31,7 @@ export const Footer = () => {
         </div>
         <span>Abdivaliev.2017@gmail.com</span>
       </div>
-      <Link to={ROUTE.admin}>ADMIN</Link>
+      <Link to={ROUTE.addProducts}>ADMIN</Link>
     </footer>
   );
 };

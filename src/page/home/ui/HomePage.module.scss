@@ -1,0 +1,30 @@
+.bannerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+
+.bannerContainer > :nth-child(1) {
+  flex: 1 1 200px;
+  max-width: 300px;
+}
+
+.bannerContainer > :nth-child(2) {
+  flex: 2 1 400px;
+}
+
+.bannerContainer > :nth-child(3) {
+  flex: 1 1 300px;
+  max-width: 350px;
+}

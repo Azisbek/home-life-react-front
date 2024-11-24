@@ -1,4 +1,3 @@
-import React from "react";
 import PropTypes from "prop-types";
 import s from "./Pagination.module.scss";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
@@ -53,7 +52,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         ) : (
           <span
             key={idx}
-            className={`${s.pageNumber} ${currentPage === page ? s.active : ""}`}
+            className={`${s.pageNumber} ${
+              currentPage === page ? s.active : ""
+            }`}
             onClick={() => onPageChange(page)}
           >
             {page}

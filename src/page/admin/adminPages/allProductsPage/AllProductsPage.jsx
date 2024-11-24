@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { Search } from "../../../../assets/icon/Search";
 import { Input } from "../../../../components/ui/Input/Input";
 import s from "./AllProductsPage.module.scss";
@@ -10,11 +9,11 @@ const AllProductsPage = () => {
       <div className={s.head}>
         <Input
           className={s.inputSearch}
-          placeholder="Поиск"
+          placeholder='Поиск'
           rightIcon={<Search />}
         />
       </div>
-      <ProductView  />
+      <ProductView />
     </div>
   );
 };

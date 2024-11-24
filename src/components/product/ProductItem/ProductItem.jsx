@@ -8,30 +8,31 @@ import { ROUTE } from "../../../constants/path";
 
 export const ProductItem = ({ data }) => {
   const navigate = useNavigate();
-  const { title, avg_rating, price, promotion, id, images } = data;
 
   const openProductHandler = () => {
-    navigate(`${ROUTE.catalog}/${id}`);
+    navigate(`${ROUTE.catalog}/${data?.id}`);
   };
 
   return (
     <div className={s.blockCart}>
       <div className={s.blockImg}>
-        <img src={images[0]} alt='product' />
+        <img src={data?.images[0]} alt='product' />
       </div>
       <div className={s.contentProductCart}>
         <div className={s.starTitleContainer}>
           <Rating
             size={24}
-            initialValue={avg_rating}
+            initialValue={data?.avg_rating}
             allowFraction={true}
             readonly={true}
           />
         </div>
 
         <div className={s.information}>
-          <p className={s.title}>{title}</p>
-          <p className={s.price}>{promotion ? promotion : price} сом</p>
+          <p className={s.title}>{data?.title}</p>
+          <p className={s.price}>
+            {data?.promotion ? data?.promotion : data?.price} сом
+          </p>
         </div>
 
         <AppButton onClick={openProductHandler} variant='button'>

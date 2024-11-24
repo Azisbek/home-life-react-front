@@ -1,10 +1,14 @@
+import { Skeleton } from "../../../../components/ui/Skeleton";
 import s from "./HomePromotion.module.scss";
 
-export const HomePromotion = ({ img }) => {
-  console.log(img);
+export const HomePromotion = ({ img, loading }) => {
   return (
     <div className={s.container}>
-      <img src={img} alt='banner' />
+      {loading ? (
+        <Skeleton className={s.skeleton} />
+      ) : (
+        <img src={img} alt='banner' />
+      )}
     </div>
   );
 };

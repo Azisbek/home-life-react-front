@@ -5,8 +5,9 @@ import { setFilter } from "../../../catalog-widget/components/filter-catalog/mod
 import s from "./HomeFilterProduct.module.scss";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "../../../../constants/path";
+import { Skeleton } from "../../../../components/ui/Skeleton";
 
-export const HomeFilterProduct = () => {
+export const HomeFilterProduct = ({ loading }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { data } = useGetFilterCategoriesQuery();
@@ -18,19 +19,23 @@ export const HomeFilterProduct = () => {
 
   return (
     <div className={s.container}>
-      <ul className={s.containerFilter}>
-        {data?.map((item) => {
-          return (
-            <li
-             className={s.listItemFilter}
-              onClick={() => filterCategoriesFilter(item.value)}
-              key={nanoid()}
-            >
-              {item.label}
-            </li>
-          );
-        })}
-      </ul>
+      {loading ? (
+        <Skeleton className={s.skeleton} />
+      ) : (
+        <ul className={s.containerFilter}>
+          {data?.map((item) => {
+            return (
+              <li
+                className={s.listItemFilter}
+                onClick={() => filterCategoriesFilter(item.value)}
+                key={nanoid()}
+              >
+                {item.label}
+              </li>
+            );
+          })}
+        </ul>
+      )}
     </div>
   );
 };
