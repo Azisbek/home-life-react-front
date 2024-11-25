@@ -1,0 +1,50 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h2 {
+      color: rgb(29, 29, 26);
+      font-size: 28px;
+      font-weight: 600;
+      line-height: 34px;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 16px;
+        line-height: 20px;
+      }
+    }
+
+    span {
+      font-size: 24px;
+      cursor: pointer;
+    }
+  }
+
+  .rating {
+    margin: 20px 0;
+  }
+
+  textarea {
+    border: 0.5px solid rgb(210, 210, 209);
+    height: 179px;
+    border-radius: 10px;
+  }
+
+  button {
+    background-color: rgb(250, 213, 73);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: auto;
+    margin-top: 20px;
+    line-height: 19px;
+    cursor: pointer;
+  }
+}
