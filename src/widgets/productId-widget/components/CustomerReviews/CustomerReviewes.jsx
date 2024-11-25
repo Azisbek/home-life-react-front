@@ -26,7 +26,7 @@ export const CustomerReviewes = ({ array }) => {
           className={s.button}
           onClick={() => setOpenComment(!openComment)}
         >
-          Написать отзыв
+          <a href="#comment">Написать отзыв</a>
         </button>
       </div>
       {array.map((el, index) => (

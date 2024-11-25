@@ -7,7 +7,7 @@ import { AppButton } from "../../../../components/ui/Button";
 const Comment = ({close}) => {
   return (
     <form className={s.comment}>
-      <div>
+      <div id="comment">
         <h2 className={s.title}>Написать свой отзыв</h2>
         <span onClick={() => close(false)}>
           <IoClose />
