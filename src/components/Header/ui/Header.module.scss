@@ -9,12 +9,15 @@
   .logo {
     width: 182px;
   }
-}
-
-
-@media only screen and (max-width: 480px) {
-  .containerHeader{
-   
+  .burgerMenu {
+    box-sizing: border-box;
+    padding: 18px 14px 18px 14px;
+    border: 0.5px solid rgb(119, 119, 118);
+    border-radius: 6px;
   }
 }
 
+@media only screen and (max-width: 480px) {
+  .containerHeader {
+  }
+}

@@ -1,0 +1,23 @@
+.containerBox {
+  padding-top: 90px;
+  padding-bottom: 40px;
+  h1 {
+    color: rgb(29, 29, 26);
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 44px;
+  }
+
+  p {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 23px;
+  }
+  .toggleButton {
+    border: none;
+    background-color: white;
+    font-size: 13px;
+    font-weight: 500;
+  }
+}
