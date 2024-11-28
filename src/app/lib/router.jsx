@@ -4,9 +4,9 @@ import { Redirect } from "./Redirect";
 import CustomErrorBoundary from "../../components/ErrorBoundary/ErrorBoundary";
 import { ROUTE } from "../../constants/path";
 import { Layout } from "../layouts/Layout";
-// import { authLoader } from "./authLoader";
+import { authLoader } from "./authLoader";
 
-import { meLoader } from "./meLoader";
+// import { meLoader } from "./meLoader";
 const HomePage = lazy(() => import("../../page/home"));
 const Catalog = lazy(() => import("../../page/catalog"));
 const ProductPage = lazy(() => import("../../page/product-page"));
@@ -105,8 +105,8 @@ export const router = createBrowserRouter([
             element: <Order />,
           },
         ].map((config) => ({
-          // loader: authLoader,
-          loader: meLoader,
+          loader: authLoader,
+          // loader: meLoader,
           ...config,
         })),
       },
