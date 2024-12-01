@@ -8,8 +8,6 @@ import s from "./HomeProductDay.module.scss";
 export const HomeProductDay = ({ data, loading }) => {
   const { isMobile } = useScreenWidth();
 
-  console.log(data);
-
   const renderSkeletons = () =>
     isMobile ? <MobileSkeleton /> : <ProductSkeleton />;
 

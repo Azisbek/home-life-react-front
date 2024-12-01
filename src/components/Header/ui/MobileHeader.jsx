@@ -69,6 +69,7 @@ export function MobileHeader() {
           <p onClick={() => navigationPathHandler(ROUTE.contacts)}>Контакты</p>
           <p onClick={() => navigationPathHandler(ROUTE.basket)}>Корзина</p>
           <p onClick={() => navigationPathHandler(ROUTE.about)}>О нас</p>
+          <p onClick={() => navigationPathHandler(ROUTE.signIn)}>Войти</p>
         </div>
       </ModalRight>
     </>

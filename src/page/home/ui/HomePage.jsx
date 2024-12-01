@@ -13,7 +13,6 @@ export const HomePage = () => {
 
   return (
     <>
-      {/* TODO надо закончить */}
       <div className={s.bannerContainer}>
         <HomeFilterProduct loading={isLoading} />
         <HomePromotion loading={isLoading} img={data?.homepage.banner.image} />

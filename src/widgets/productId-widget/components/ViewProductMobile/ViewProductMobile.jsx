@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useAddProductBasketMutation } from "../ViewProduct/api";
 import { Counter } from "../../../../components/ui/Counter/Counter";
 
-export const ViewProductMobile = ({ data }) => {
+export const ViewProductMobile = ({ data, loading }) => {
   const [quantity, setQuantity] = useState(1);
   const [addProductBasket] = useAddProductBasketMutation();
 
@@ -22,7 +22,7 @@ export const ViewProductMobile = ({ data }) => {
   };
   return (
     <div className={s.container}>
-      <SwipeImage images={data?.images} />
+      <SwipeImage loading={loading} images={data?.images} />
       <div className={s.containerBlock}>
         <Rating
           size={20}

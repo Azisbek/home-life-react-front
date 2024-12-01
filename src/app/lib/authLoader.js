@@ -11,6 +11,7 @@ function throwUnauthorizedError() {
 
 export async function authLoader() {
   const access = TokenStorageService.getToken();
+  console.log(access);
 
   try {
     if (!access) {
@@ -21,7 +22,7 @@ export async function authLoader() {
     const { data } = await store.dispatch(
       signInApi.endpoints.refresh.initiate({ refresh: access })
     );
-  
+
     if (data && data.access) {
       TokenStorageService.setToken(data.access);
     } else {

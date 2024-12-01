@@ -1,4 +1,3 @@
-import s from "./SignIn.module.scss";
 import { Input } from "../../../components/ui/Input";
 import { Paper } from "../../../components/ui/Paper";
 import { Link } from "react-router-dom";
@@ -7,13 +6,11 @@ import { useState } from "react";
 import { AppButton } from "../../../components/ui/Button";
 import { Space } from "../../../components/ui/Space/Space";
 import { useSignIn } from "../../../hooks/useSignIn";
-import { useSelector } from "react-redux";
+import s from "./SignIn.module.scss";
+import { ModalSuccessSignIn } from "../../../components/ModalSuccessSignIn";
 
 export const SignIn = () => {
-  //TODO add error text and loading
-  const users = useSelector((state) => state.signIn.user);
   const [password, setPassword] = useState(false);
-  // eslint-disable-next-line no-unused-vars
   const { setForm, onSubmit, errorText, loginResponse } = useSignIn();
 
   const passwordHandler = () => {
@@ -29,10 +26,10 @@ export const SignIn = () => {
   };
 
   return (
-    <div className={s.container}>
-      <>
+    <>
+      <ModalSuccessSignIn isOpen={loginResponse.isSuccess} />
+      <div className={s.container}>
         <div className={s.titleBlock}>
-          <h1>{users.username}</h1>
           <h3>Войти</h3>
           <Space h={8} />
           <p>
@@ -61,7 +58,7 @@ export const SignIn = () => {
             </AppButton>
           </Paper>
         </form>
-      </>
-    </div>
+      </div>
+    </>
   );
 };

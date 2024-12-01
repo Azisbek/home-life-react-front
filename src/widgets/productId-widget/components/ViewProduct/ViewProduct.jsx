@@ -7,7 +7,7 @@ import { Counter } from "../../../../components/ui/Counter/Counter";
 import { Space } from "../../../../components/ui/Space/Space";
 import { useState } from "react";
 
-export const ViewProduct = ({ data }) => {
+export const ViewProduct = ({ data, loading }) => {
   const [quantity, setQuantity] = useState(1);
   const [addProductBasket] = useAddProductBasketMutation();
 
@@ -26,7 +26,7 @@ export const ViewProduct = ({ data }) => {
       <h3>Просмотр товара</h3>
       <div className={s.aboutProduct}>
         <div>
-          <SwipeImage images={data?.images} />
+          <SwipeImage loading={loading} images={data?.images} />
         </div>
         <div className={s.description}>
           <span>{data?.brand.title}</span>

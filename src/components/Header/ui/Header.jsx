@@ -4,12 +4,13 @@ import logo from "../../../assets/Logo.png";
 import { Search } from "../../../assets/icon/Search";
 
 import clsx from "clsx";
-import s from "./Header.module.scss";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFilter } from "../../../widgets/catalog-widget/components/filter-catalog/model/filter.slice";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "../../../constants/path";
+import { AppButton } from "../../ui/Button";
+import s from "./Header.module.scss";
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -45,7 +46,13 @@ export const Header = () => {
 
       <AppNavigateHeader />
 
-      {/* <AppProfileHeader onOpen={onOpen} /> */}
+      <AppButton
+        onClick={() => navigate(ROUTE.signUp)}
+        className={s.buttonSingUp}
+        variant='button'
+      >
+        Зарегистрироваться
+      </AppButton>
     </header>
   );
 };

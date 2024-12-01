@@ -36,7 +36,7 @@ export const $baseQueryWithRefresh = async (args, api, extraOptions) => {
         url: "/api/token/refresh/",
         method: "POST",
         body: {
-          access,
+          refresh: access,
         },
       },
       api,

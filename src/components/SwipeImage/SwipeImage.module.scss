@@ -1,24 +1,36 @@
-@keyframes animated-smooth {
-  from {
-    opacity: 0;
+.swiperContainer {
+  @keyframes animated-smooth {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
-  to {
-    opacity: 1;
-  }
-}
-
-.image {
-  width: 326px;
-  height: 359px;
-  object-fit: contain;
-  animation: animated-smooth 0.5s;
-}
-
-@media only screen and (max-width: 768px) {
   .image {
-    width: 280px;
-    height: 308px;
+    width: 326px;
+    height: 359px;
+    object-fit: contain;
     animation: animated-smooth 0.5s;
+  }
+
+  .skeletonImg {
+    width: 326px;
+    height: 359px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .image {
+      width: 280px;
+      height: 308px;
+      animation: animated-smooth 0.5s;
+    }
+
+    .skeletonImg {
+      width: 280px;
+      height: 308px;
+    }
   }
 }
