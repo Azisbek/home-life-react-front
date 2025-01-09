@@ -16,14 +16,18 @@
   }
 
   .button {
-    color: rgb(79, 104, 255);
-    background-color: white;
-    font-size: 14px;
-    font-weight: 500;
     line-height: 17px;
     border: 0;
     border-bottom: 1px solid #4f68ff;
+    background: none;
     cursor: pointer;
+
+    a {
+      text-decoration: none;
+      color: rgb(79, 104, 255);
+      font-size: 14px;
+      font-weight: 500;
+    }
 
     @media only screen and (max-width: 768px) {
       font-size: 12px;

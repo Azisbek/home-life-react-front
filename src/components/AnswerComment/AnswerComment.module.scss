@@ -1,0 +1,49 @@
+.answerComment {
+  width: 90%;
+  margin-left: auto;
+  margin: 20px 0 20px auto;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h3 {
+      color: rgb(29, 29, 26);
+      font-size: 18px;
+      font-weight: 600;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 14px;
+        line-height: 20px;
+      }
+    }
+
+    span {
+      font-size: 22px;
+      cursor: pointer;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    border: 0.5px solid rgb(210, 210, 209);
+    height: 179px;
+    border-radius: 10px;
+    outline: none;
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  button {
+    background-color: rgb(250, 213, 73);
+    padding: 15px 25px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    float: inline-end;
+    line-height: 19px;
+    cursor: pointer;
+  }
+}
