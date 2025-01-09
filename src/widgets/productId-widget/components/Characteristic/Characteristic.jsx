@@ -1,22 +1,21 @@
 import s from "./Characteristic.module.scss";
-export const Characteristic = () => {
+export const Characteristic = ({ data }) => {
+  console.log(data?.main_characteristics);
   return (
-    <div>
+    <>
       <p className={s.title}>Основные характеристики</p>
       <div className={s.container}>
         <ul className={s.blockList}>
-          <li>Максимальная загрузка белья</li>
-          <li>Тип мотора</li>
-          <li>Макс. скорость отжима</li>
-          <li>Защита от протечек</li>
-        </ul>
-        <ul className={s.blockList}>
-          <li>6 кг</li>
-          <li>Стандартный</li>
-          <li>1000 Об/мин</li>
-          <li>Да</li>
+          {data?.main_characteristics.map((item) => {
+            return (
+              <div key={item.label} className={s.block}>
+                <li>{item.label}</li>
+                <li>{item.value}</li>
+              </div>
+            );
+          })}
         </ul>
       </div>
-    </div>
+    </>
   );
 };

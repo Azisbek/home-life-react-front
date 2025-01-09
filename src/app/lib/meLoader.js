@@ -7,7 +7,7 @@ import { ROUTE } from "../../constants/path";
 export async function meLoader() {
   const token = TokenStorageService.getToken();
   if (!token) {
-    return redirect(ROUTE.signUp);
+    return redirect(ROUTE.signIn);
   }
 
   try {

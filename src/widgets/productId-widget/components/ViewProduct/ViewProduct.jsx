@@ -38,7 +38,7 @@ export const ViewProduct = ({ data, loading }) => {
           />
           <p className={s?.colorText}>Цвета</p>
           <div className={s.color}>
-            <div style={{ background: data?.color.key }} />
+            <div style={{ background: data?.color }} />
           </div>
           <p>{data?.promotion ? data.promotion : data?.price}</p>
           <Space h={30} />

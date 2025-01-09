@@ -75,13 +75,13 @@ export const FilterProduct = () => {
       <input
         placeholder='Максимальная цена'
         type='number'
-        ref={priceMinRef}
+        ref={priceMaxRef}
         name='price_min'
       />
       <input
         placeholder='Минимальная цена'
         type='number'
-        ref={priceMaxRef}
+        ref={priceMinRef}
         name='price_max'
       />
       <AppButton onClick={handleApplyFilters}>Применить</AppButton>

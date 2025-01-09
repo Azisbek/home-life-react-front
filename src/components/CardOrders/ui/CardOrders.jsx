@@ -1,7 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import { AppButton } from "../../ui/Button/AppButton";
 import s from "./CardOrders.module.scss";
+import { ROUTE } from "../../../constants/path";
 
-export const CardOrders = ({ quantity, subtotal, totalPrice }) => {
+export const CardOrders = ({ quantity, subtotal, totalPrice, type }) => {
+  const navigate = useNavigate();
+  const handleClickButton = () => {
+    if (type === "navigate") {
+      navigate(ROUTE.order);
+    }
+    if (type === "postOrder") {
+      alert("hello world");
+    }
+  };
   return (
     <div className={s.contain}>
       <p className={s.title}>Сумма заказов </p>
@@ -12,7 +23,9 @@ export const CardOrders = ({ quantity, subtotal, totalPrice }) => {
         <p className={s.result}>Итого:</p>
         <p> {totalPrice}</p>
       </div>
-      <AppButton className={s.button}>Подтвердить заказ</AppButton>
+      <AppButton onClick={handleClickButton} className={s.button}>
+        Подтвердить заказ
+      </AppButton>
     </div>
   );
 };

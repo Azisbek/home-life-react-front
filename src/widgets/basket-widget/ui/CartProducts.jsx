@@ -36,6 +36,7 @@ export const CartProducts = () => {
           </div>
 
           <CardOrders
+            type='navigate'
             quantity={data?.total_quantity}
             subtotal={data?.subtotal}
             totalPrice={data?.totalPrice}
