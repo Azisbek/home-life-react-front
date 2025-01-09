@@ -7,9 +7,13 @@ import s from "./Footer.module.scss";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../constants/path";
+import { useSelector } from "react-redux";
 
 export const Footer = () => {
   const { isMobile } = useScreenWidth();
+  const role = useSelector((state) => state.signIn.user.role);
+  console.log(role);
+
   return (
     <footer className={clsx("container", s.footer)}>
       <h3>Наши контакты</h3>
@@ -31,7 +35,8 @@ export const Footer = () => {
         </div>
         <span>Abdivaliev.2017@gmail.com</span>
       </div>
-      <Link to={ROUTE.addProducts}>ADMIN</Link>
+
+     {role === "admin" && <Link to={ROUTE.admin}>ADMIN</Link>}
     </footer>
   );
 };

@@ -3,6 +3,7 @@ import TokenStorageService from "../../model/TokenService";
 import { signInApi } from "../../page/sign-in/api";
 import { store } from "../store/store";
 import { ROUTE } from "../../constants/path";
+import { meLoader } from "./meLoader";
 
 export async function adminLoader() {
   const token = TokenStorageService.getToken();
@@ -12,11 +13,10 @@ export async function adminLoader() {
 
   try {
     const result = await store.dispatch(signInApi.endpoints.getMe.initiate());
-    console.log(result);
     if (result.data.role !== "admin") {
       return redirect(ROUTE.signIn);
     }
-    return null;
+    return await meLoader();
   } catch (e) {
     if (e instanceof Error) {
       console.error("Error:", e.message);

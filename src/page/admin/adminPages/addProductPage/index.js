@@ -1,2 +1,2 @@
-import AddProductPage from "./AddProductPage";
-export default AddProductPage
+import AddProductPage from "./ui/AddProductPage";
+export default AddProductPage;
