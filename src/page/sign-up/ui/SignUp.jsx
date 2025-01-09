@@ -1,4 +1,3 @@
-import s from "./SignUp.module.scss";
 import { Input } from "../../../components/ui/Input";
 import { useState } from "react";
 import { FilterSelect } from "../../../components/ui/FilterSelect";
@@ -8,6 +7,8 @@ import { Link } from "react-router-dom";
 import { ROUTE } from "../../../constants/path";
 import { Space } from "../../../components/ui/Space/Space";
 import { useSignUp } from "../../../hooks/useSignUp";
+import { ModalSuccessSignUp } from "../../../components/ModalSuccessSignUp";
+import s from "./SignUp.module.scss";
 
 export const SignUp = () => {
   //TODO add error text and loading
@@ -33,6 +34,7 @@ export const SignUp = () => {
 
   return (
     <>
+      <ModalSuccessSignUp isOpen={authResponse.isSuccess} />
       <div className={s.titleBlock}>
         <h3>Зарегистрироваться</h3>
         <Space h={8} />
@@ -78,8 +80,8 @@ export const SignUp = () => {
               defaultValue='Выберите пол'
               onChange={selectChange("gender")}
               options={[
-                { value: "men", label: "Мужской" },
-                { value: "woman", label: "Женский" },
+                { value: "6", label: "Мужской" },
+                { value: "7", label: "Женский" },
               ]}
             />
             <Input

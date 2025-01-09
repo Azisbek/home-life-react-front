@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSwipeable } from "react-swipeable";
 import s from "./SwipeImage.module.scss";
+import { Skeleton } from "../ui/Skeleton";
 
-export const SwipeImage = ({ images }) => {
+export const SwipeImage = ({ images, loading }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const handlers = useSwipeable({
@@ -28,12 +29,16 @@ export const SwipeImage = ({ images }) => {
 
   return (
     <div {...handlers} className={s.swiperContainer}>
-      <img
-        loading='lazy'
-        src={images && images[currentIndex]}
-        alt={`image ${currentIndex}`}
-        className={s.image}
-      />
+      {loading ? (
+        <Skeleton className={s.skeletonImg} />
+      ) : (
+        <img
+          loading='lazy'
+          src={images && images[currentIndex]}
+          alt={`image ${currentIndex}`}
+          className={s.image}
+        />
+      )}
     </div>
   );
 };

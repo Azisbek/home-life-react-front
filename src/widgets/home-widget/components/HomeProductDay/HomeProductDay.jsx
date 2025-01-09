@@ -3,6 +3,7 @@ import { ProductItemMobile } from "../../../../components/product/ProductItemMob
 import { ProductSkeleton } from "../../../../components/ui/ProductSkeleton/DesktopSkeleton";
 import { MobileSkeleton } from "../../../../components/ui/ProductSkeleton/MobileSkeleton";
 import { useScreenWidth } from "../../../../hooks/useScreenWidth";
+import s from "./HomeProductDay.module.scss";
 
 export const HomeProductDay = ({ data, loading }) => {
   const { isMobile } = useScreenWidth();
@@ -12,11 +13,16 @@ export const HomeProductDay = ({ data, loading }) => {
 
   const renderProduct = () => {
     return isMobile ? (
-      <ProductItemMobile data={data.data} />
+      <ProductItemMobile data={data} />
     ) : (
-      <ProductItem data={data.data} />
+      <ProductItem data={data} />
     );
   };
 
-  return <>{loading ? renderSkeletons() : renderProduct()}</>;
+  return (
+    <div className={s.container}>
+      <p className={s.titleProductDay}>Товар дня</p>
+      {loading ? renderSkeletons() : renderProduct()}
+    </div>
+  );
 };

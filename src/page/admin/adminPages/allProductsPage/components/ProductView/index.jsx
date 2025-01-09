@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import s from "./ProductView.module.scss";
 import ReactStars from "react-rating-stars-component";
 
@@ -23,8 +22,8 @@ const ProductView = () => {
             <td>
               <img
                 className={s.img}
-                src="https://images.philips.com/is/image/philipsconsumer/vrs_6bc37d24b291fee1a66f5b481ee10078f3d5d70c?wid=700&hei=700&$pnglarge$"
-                alt="img"
+                src='https://images.philips.com/is/image/philipsconsumer/vrs_6bc37d24b291fee1a66f5b481ee10078f3d5d70c?wid=700&hei=700&$pnglarge$'
+                alt='img'
               />
             </td>
             <td>
@@ -37,16 +36,16 @@ const ProductView = () => {
             <td>30</td>
             <td>25 490</td>
             <td>
-              <select defaultValue="Вкл">
-                <option value="Вкл">Вкл</option>
-                <option value="Выкл">Выкл</option>
+              <select defaultValue='Вкл'>
+                <option value='Вкл'>Вкл</option>
+                <option value='Выкл'>Выкл</option>
               </select>
             </td>
             <td>
               <ReactStars
                 count={5}
                 size={24}
-                activeColor="#ffd700"
+                activeColor='#ffd700'
                 value={4}
                 isHalf={true}
                 edit={false}

@@ -16,16 +16,16 @@ export const ProductPage = () => {
   const { productId } = useParams();
   const { isMobile } = useScreenWidth();
 
-  const { data } = useGetCatalogProductIdQuery(
+  const { data, isLoading } = useGetCatalogProductIdQuery(
     { productId },
     { refetchOnMountOrArgChange: true }
   );
   return (
     <div className={s.container}>
       {isMobile ? (
-        <ViewProductMobile data={data} />
+        <ViewProductMobile loading={isLoading} data={data} />
       ) : (
-        <ViewProduct data={data} />
+        <ViewProduct loading={isLoading} data={data} />
       )}
       <Space h={isMobile ? 40 : 90} />
       <Characteristic data={data} />

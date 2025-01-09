@@ -1,10 +1,8 @@
-import React from "react";
-import s from "./AdminPanel.module.scss";
 import { NavLink } from "react-router-dom";
 import { ROUTE } from "../../../../constants/path";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
-import { BiPurchaseTag } from "react-icons/bi";
 import { LuUserPlus2 } from "react-icons/lu";
+import s from "./AdminPanel.module.scss";
 
 const AdminPanel = () => {
   return (

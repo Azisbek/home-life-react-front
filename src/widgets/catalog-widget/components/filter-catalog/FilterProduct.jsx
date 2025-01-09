@@ -40,49 +40,52 @@ export const FilterProduct = () => {
     dispatch(setFilter({ key: "price_max", value: priceMax }));
   };
 
-  // const handleResetFilters = () => {
-  //   setFilters({
-  //     category: "",
-  //     color: "",
-  //     brand: "",
-  //     priceMin: "",
-  //     priceMax: "",
-  //   });
-  //   dispatch(resetFilters());
-  // };
+  const handleResetFilters = () => {
+    setFilters({
+      category: "",
+      color: "",
+      brand: "",
+      priceMin: "",
+      priceMax: "",
+    });
+    dispatch(resetFilters());
+  };
 
   return (
     <div className={s.filterContainer}>
       <FilterSelect
+        defaultValue='Категории'
         onChange={handleFilterChange("category")}
         options={categories || []}
         placeholder='Select Category'
       />
       <FilterSelect
+        defaultValue='Цвет'
         onChange={handleFilterChange("color")}
         options={colors || []}
         placeholder='Select Color'
       />
       <FilterSelect
+        defaultValue='Брент'
         onChange={handleFilterChange("brand")}
         options={brands || []}
         placeholder='Select Brand'
       />
 
       <input
-        placeholder='min'
+        placeholder='Максимальная цена'
         type='number'
-        ref={priceMinRef}
+        ref={priceMaxRef}
         name='price_min'
       />
       <input
-        placeholder='max'
+        placeholder='Минимальная цена'
         type='number'
-        ref={priceMaxRef}
+        ref={priceMinRef}
         name='price_max'
       />
       <AppButton onClick={handleApplyFilters}>Применить</AppButton>
-      <AppButton onClick={() => resetFilters()}>Сбросить</AppButton>
+      <AppButton onClick={handleResetFilters}>Сбросить</AppButton>
     </div>
   );
 };

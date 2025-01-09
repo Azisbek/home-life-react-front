@@ -1,6 +1,14 @@
 .container {
+  .skeleton {
+    width: 100%;
+    height: 100%;
+  }
+
   .containerFilter {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
 
     .listItemFilter {
       color: rgb(0, 0, 0);
