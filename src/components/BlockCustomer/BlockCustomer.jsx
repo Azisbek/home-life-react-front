@@ -22,7 +22,6 @@ export const BlockCustomer = ({ name, date, rating, comment }) => {
         <div className={s.blockButton}>
           <button className={s.button} onClick={() => setOpenAnswerBlock(true)}>Ответить</button>
           {openAnswerBlock && <AnswerComment close={setOpenAnswerBlock}/>}
-          <button className={s.button}>Читать все отзывы</button>
         </div>
       </div>
     </div>
