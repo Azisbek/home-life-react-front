@@ -12,10 +12,6 @@ const Comment = ({ close }) => {
   const UserID = useParams(null);
   const [addProductComment] = useAddProductCommentMutation();
 
-  const handleRating = (rate) => setRating(rate);
-
-  const handleCommentChange = (event) => setComment(event);
-
   const handleAddToComment = () => {
     event.preventDefault();
     if (comment && rating !== 0) {
@@ -41,14 +37,14 @@ const Comment = ({ close }) => {
       <Rating
         className={s.rating}
         size={22}
-        onClick={handleRating}
+        onClick={() => setRating(rate)}
         initialValue={rating}
         allowFraction={false}
         readonly={false}
       />
       <textarea
         value={comment}
-        onChange={(e) => handleCommentChange(e.target.value)}
+        onChange={(e) => setComment(e.target.value)}
       ></textarea>
       <AppButton onClick={handleAddToComment} className={s.btn} type={"submit"}>
         Разместить отзыв
