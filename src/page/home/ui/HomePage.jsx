@@ -15,7 +15,10 @@ export const HomePage = () => {
     <>
       <div className={s.bannerContainer}>
         <HomeFilterProduct loading={isLoading} />
-        <HomePromotion loading={isLoading} img={data?.homepage.banner.image} />
+        <HomePromotion
+          loading={isLoading}
+          img={data?.homepage?.banner?.image}
+        />
         <HomeProductDay
           loading={isLoading}
           data={data?.homepage.product_of_the_day}

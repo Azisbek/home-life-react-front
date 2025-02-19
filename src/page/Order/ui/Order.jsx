@@ -5,9 +5,11 @@ import { Space } from "../../../components/ui/Space/Space";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { CardOrders } from "../../../components/CardOrders/ui/CardOrders";
+import { useGetBasketQuery } from "../../../widgets/basket-widget/api";
 
 export const Order = () => {
   const userName = useSelector((state) => state.signIn.user.username);
+  const { data } = useGetBasketQuery();
   const [paymant, setPaymant] = useState("");
   const changeHandlerPaymant = (e) => {
     setPaymant(e.target.value);
@@ -51,7 +53,12 @@ export const Order = () => {
             </div>
           </div>
         </form>
-        <CardOrders type='postOrder' />
+        <CardOrders
+          type='postOrder'
+          quantity={data?.total_quantity}
+          subtotal={data?.subtotal}
+          totalPrice={data?.totalPrice}
+        />
       </div>
     </div>
   );

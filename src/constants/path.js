@@ -14,4 +14,5 @@ export const ROUTE = {
   addNews: "/admin/add-news",
   allProducts: "/admin/all-products",
   applications: "/admin/applications",
+  archive: "/admin/product/archive/",
 };

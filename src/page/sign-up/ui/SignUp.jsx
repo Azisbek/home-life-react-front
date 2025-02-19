@@ -13,7 +13,7 @@ import s from "./SignUp.module.scss";
 export const SignUp = () => {
   //TODO add error text and loading
   // eslint-disable-next-line no-unused-vars
-  const { authResponse, errorText, setForm, onSubmit } = useSignUp();
+  const { authResponse, errorText, setForm, onSubmit, showModal } = useSignUp();
   const [password, setPassword] = useState(false);
 
   const passwordHandler = () => {
@@ -80,8 +80,8 @@ export const SignUp = () => {
               defaultValue='Выберите пол'
               onChange={selectChange("gender")}
               options={[
-                { value: "6", label: "Мужской" },
-                { value: "7", label: "Женский" },
+                { value: "1", label: "Мужской" },
+                { value: "2", label: "Женский" },
               ]}
             />
             <Input

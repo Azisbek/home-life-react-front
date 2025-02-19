@@ -1,16 +1,13 @@
-import { useGetCatalogProductQuery } from "../../../../../../widgets/catalog-widget/api/CatalogApi";
-import { useIsActiveProductsMutation } from "../../../archive/api";
+import {
+  useGetProductArchiveQuery,
+  useIsActiveProductsMutation,
+} from "../../../archive/api";
 import s from "./ProductView.module.scss";
 import ReactStars from "react-rating-stars-component";
 
-const ProductView = ({ search }) => {
+const ProductViewArchive = () => {
+  const { data, refetch } = useGetProductArchiveQuery();
   const [isActiveProduct] = useIsActiveProductsMutation();
-  const { data, refetch } = useGetCatalogProductQuery(
-    { search },
-    {
-      refetchOnMountOrArgChange: true,
-    }
-  );
 
   const handleStatusChange = async (id, newStatus) => {
     try {
@@ -37,7 +34,7 @@ const ProductView = ({ search }) => {
           </tr>
         </thead>
         <tbody>
-          {data?.results.map((el) => {
+          {data?.map((el) => {
             return (
               <tr key={el.id}>
                 <td>
@@ -79,7 +76,7 @@ const ProductView = ({ search }) => {
         </tbody>
       </table>
       {/* { эгер товарлар жок болсо анан чыксын деп коюп койдум, кийин бекэндди кошкондо условия коюп коебуз, пока чыгып эле туруп турсун} */}
-      {data?.results.length === 0 && (
+      {data?.length === 0 && (
         <div className={s.noProducts}>
           <h2>Товары отсутствуют</h2>
           <p>Добавьте товары в каталог, чтобы они появились здесь.</p>
@@ -89,4 +86,4 @@ const ProductView = ({ search }) => {
   );
 };
 
-export default ProductView;
+export default ProductViewArchive;

@@ -45,6 +45,13 @@ const AdminPanel = () => {
             <PiShoppingCartSimpleBold />
           </span>
         </NavLink>
+
+        <NavLink
+          to={ROUTE.archive}
+          className={({ isActive }) => (isActive ? s.activeLink : "")}
+        >
+          Архив
+        </NavLink>
       </nav>
     </div>
   );

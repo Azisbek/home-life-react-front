@@ -6,6 +6,7 @@ import { ROUTE } from "../../constants/path";
 import { Layout } from "../layouts/Layout";
 import { meLoader } from "./meLoader";
 import { adminLoader } from "./adminLoader";
+import Archive from "../../page/admin/adminPages/archive/Archive";
 
 // Ленивая загрузка страниц
 const HomePage = lazy(() => import("../../page/home"));
@@ -52,6 +53,7 @@ export const router = createBrowserRouter([
           { path: ROUTE.addNews, element: <AddNewsPage /> },
           { path: ROUTE.applications, element: <Applications /> },
           { path: ROUTE.allProducts, element: <AllProductsPage /> },
+          { path: ROUTE.archive, element: <Archive /> },
         ].map((config) => ({
           loader: adminLoader,
           ...config,

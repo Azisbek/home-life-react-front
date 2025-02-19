@@ -6,10 +6,11 @@ import { useAddProductBasketMutation } from "./api";
 import { Counter } from "../../../../components/ui/Counter/Counter";
 import { Space } from "../../../../components/ui/Space/Space";
 import { useState } from "react";
+import { CustomModal } from "../../../../components/ui/Modal/components/CustomModal";
 
 export const ViewProduct = ({ data, loading }) => {
   const [quantity, setQuantity] = useState(1);
-  const [addProductBasket] = useAddProductBasketMutation();
+  const [addProductBasket, { isSuccess }] = useAddProductBasketMutation();
 
   const handleAddToBasket = () => {
     if (data) {
@@ -20,6 +21,12 @@ export const ViewProduct = ({ data, loading }) => {
       addProductBasket(basketData);
     }
   };
+
+  if(isSuccess){
+    <CustomModal>
+      <h1>товар добавлен в корзину</h1>
+    </CustomModal>
+  }
 
   return (
     <div className={s.container}>
