@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import s from "./Comment.module.scss";
 import { IoClose } from "react-icons/io5";
 import { Rating } from "react-simple-star-rating";
 import { AppButton } from "../../../../components/ui/Button";
+import { useParams } from "react-router-dom";
+import { useAddProductCommentMutation } from "./api";
 
-const Comment = ({close}) => {
+const Comment = ({ close }) => {
+  const [comment, setComment] = useState("");
+  const [rating, setRating] = useState(0);
+  const UserID = useParams(null);
+  const [addProductComment] = useAddProductCommentMutation();
+
+  const handleAddToComment = () => {
+    event.preventDefault();
+    if (comment && rating !== 0) {
+      const commentData = {
+        product: UserID.productId,
+        comments: comment,
+        rating: rating,
+      };
+      addProductComment(commentData);
+      setComment("");
+      setRating(0);
+    }
+  };
+
   return (
     <form className={s.comment}>
       <div id="comment">
@@ -16,12 +37,18 @@ const Comment = ({close}) => {
       <Rating
         className={s.rating}
         size={22}
-        initialValue={0}
-        allowFraction={true}
-        readonly={true}
+        onClick={() => setRating(rate)}
+        initialValue={rating}
+        allowFraction={false}
+        readonly={false}
       />
-      <textarea></textarea>
-        <AppButton className={s.btn} type={"submit"}>Разместить отзыв</AppButton>
+      <textarea
+        value={comment}
+        onChange={(e) => setComment(e.target.value)}
+      ></textarea>
+      <AppButton onClick={handleAddToComment} className={s.btn} type={"submit"}>
+        Разместить отзыв
+      </AppButton>
     </form>
   );
 };
