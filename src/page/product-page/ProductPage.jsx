@@ -18,7 +18,7 @@ export const ProductPage = () => {
 
   const { data, isLoading } = useGetCatalogProductIdQuery(
     { productId },
-    { refetchOnMountOrArgChange: true }
+    { refetchOnMountOrArgChange: false }
   );
   return (
     <div className={s.container}>
@@ -32,7 +32,7 @@ export const ProductPage = () => {
       <Space h={isMobile ? 40 : 90} />
       <Description data={data} />
       <Space h={isMobile ? 40 : 90} />
-      <CustomerReviewes array={MOCKREVIEWS || 0} />
+      <CustomerReviewes array={MOCKREVIEWS || 0} productId={productId} />
     </div>
   );
 };

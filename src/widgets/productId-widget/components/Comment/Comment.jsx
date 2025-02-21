@@ -6,21 +6,23 @@ import { AppButton } from "../../../../components/ui/Button";
 import { useParams } from "react-router-dom";
 import { useAddProductCommentMutation } from "./api";
 
-const Comment = ({ close }) => {
+const Comment = ({ close, refetch }) => {
   const [comment, setComment] = useState("");
   const [rating, setRating] = useState(0);
-  const UserID = useParams(null);
+  const { productId } = useParams();
   const [addProductComment] = useAddProductCommentMutation();
 
+  console.log(productId)
+
   const handleAddToComment = () => {
-    event.preventDefault();
     if (comment && rating !== 0) {
       const commentData = {
-        product: UserID.productId,
+        product: productId,
         comments: comment,
         rating: rating,
       };
       addProductComment(commentData);
+      close(false);
       setComment("");
       setRating(0);
     }
@@ -37,7 +39,7 @@ const Comment = ({ close }) => {
       <Rating
         className={s.rating}
         size={22}
-        onClick={() => setRating(rate)}
+        onClick={(rate) => setRating(rate)}
         initialValue={rating}
         allowFraction={false}
         readonly={false}

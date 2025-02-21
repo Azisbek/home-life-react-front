@@ -22,12 +22,6 @@ export const ViewProductMobile = ({ data, loading }) => {
     }
   };
 
-  if (isSuccess) {
-    <CustomModal>
-      <h1>товар добавлен в корзину</h1>
-    </CustomModal>;
-  }
-
   return (
     <div className={s.container}>
       <SwipeImage loading={loading} images={data?.images} />
@@ -53,7 +47,7 @@ export const ViewProductMobile = ({ data, loading }) => {
           <AppButton
             onClick={handleAddToBasket}
             className={s.button}
-            variant='button'
+            variant="button"
           >
             Добавить в корзину
           </AppButton>

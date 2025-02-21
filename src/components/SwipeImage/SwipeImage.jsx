@@ -9,7 +9,7 @@ export const SwipeImage = ({ images, loading }) => {
   const handlers = useSwipeable({
     onSwipedLeft: () =>
       setCurrentIndex((prevIndex) =>
-        Math.min(prevIndex + 1, images.length - 1)
+        Math.min(prevIndex + 1, images?.length - 1)
       ),
     onSwipedRight: () =>
       setCurrentIndex((prevIndex) => Math.max(prevIndex - 1, 0)),
@@ -20,7 +20,7 @@ export const SwipeImage = ({ images, loading }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) =>
-        prevIndex === images.length - 1 ? 0 : prevIndex + 1
+        prevIndex === images?.length - 1 ? 0 : prevIndex + 1
       );
     }, 6000);
 

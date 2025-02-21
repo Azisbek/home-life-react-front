@@ -22,11 +22,6 @@ export const ViewProduct = ({ data, loading }) => {
     }
   };
 
-  if(isSuccess){
-    <CustomModal>
-      <h1>товар добавлен в корзину</h1>
-    </CustomModal>
-  }
 
   return (
     <div className={s.container}>
@@ -54,7 +49,7 @@ export const ViewProduct = ({ data, loading }) => {
           <AppButton
             onClick={handleAddToBasket}
             className={s.button}
-            variant='button'
+            variant="button"
           >
             Добавить в корзину
           </AppButton>
