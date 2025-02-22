@@ -10,13 +10,12 @@ import {
 } from "../../widgets/productId-widget/components";
 import { Space } from "../../components/ui/Space/Space";
 import s from "./ProductPage.module.scss";
-import { MOCKREVIEWS } from "../../constants/status-applications";
 
 export const ProductPage = () => {
   const { productId } = useParams();
   const { isMobile } = useScreenWidth();
 
-  const { data, isLoading } = useGetCatalogProductIdQuery(
+  const { data, isLoading, refetch } = useGetCatalogProductIdQuery(
     { productId },
     { refetchOnMountOrArgChange: false }
   );
@@ -32,7 +31,7 @@ export const ProductPage = () => {
       <Space h={isMobile ? 40 : 90} />
       <Description data={data} />
       <Space h={isMobile ? 40 : 90} />
-      <CustomerReviewes array={MOCKREVIEWS || 0} productId={productId} />
+      <CustomerReviewes data={data} refetch={refetch} />
     </div>
   );
 };
