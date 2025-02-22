@@ -17,7 +17,6 @@ export const CustomerReviewes = () => {
     { refetchOnMountOrArgChange: false }
   );
 
-  console.log(data);
 
   return (
     <div>
@@ -27,7 +26,7 @@ export const CustomerReviewes = () => {
           className={s.button}
           onClick={() => setOpenComment((prev) => !prev)}
         >
-          <a href="#comment">Написать отзыв</a>
+          Написать отзыв
         </button>
       </div>
       {data?.length === 0 && <p className={s.emptyMessage}>Нет отзывов</p>}

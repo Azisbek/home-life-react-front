@@ -5,12 +5,22 @@ import { AppButton } from "../../../../components/ui/Button";
 import { useAddProductBasketMutation } from "./api";
 import { Counter } from "../../../../components/ui/Counter/Counter";
 import { Space } from "../../../../components/ui/Space/Space";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CustomModal } from "../../../../components/ui/Modal/components/CustomModal";
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "../../../../constants/path";
 
 export const ViewProduct = ({ data, loading }) => {
+  const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
   const [addProductBasket, { isSuccess }] = useAddProductBasketMutation();
+  const [isOpenModal, setIsOpenModal] = useState(false);
+
+  useEffect(() => {
+    if (isSuccess) {
+      setIsOpenModal(true);
+    }
+  }, [isSuccess]);
 
   const handleAddToBasket = () => {
     if (data) {
@@ -22,9 +32,37 @@ export const ViewProduct = ({ data, loading }) => {
     }
   };
 
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
 
   return (
     <div className={s.container}>
+      <CustomModal
+        contentClass={s.modalContainer}
+        isOpen={isOpenModal}
+        onClose={closeModal}
+      >
+        <div className={s.modal}>
+          <p className={s.text}>Товар успешно добавлен в корзину!</p>
+          <div className={s.buttonContainer}>
+            <AppButton
+              onClick={closeModal}
+              className={s.button}
+              variant='button'
+            >
+              Закрыть
+            </AppButton>
+            <AppButton
+              onClick={() => navigate(ROUTE.basket)}
+              className={s.button}
+              variant='button'
+            >
+              Корзина
+            </AppButton>
+          </div>
+        </div>
+      </CustomModal>
       <h3>Просмотр товара</h3>
       <div className={s.aboutProduct}>
         <div>
@@ -49,7 +87,7 @@ export const ViewProduct = ({ data, loading }) => {
           <AppButton
             onClick={handleAddToBasket}
             className={s.button}
-            variant="button"
+            variant='button'
           >
             Добавить в корзину
           </AppButton>

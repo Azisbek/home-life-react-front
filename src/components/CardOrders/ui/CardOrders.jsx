@@ -3,14 +3,20 @@ import { AppButton } from "../../ui/Button/AppButton";
 import s from "./CardOrders.module.scss";
 import { ROUTE } from "../../../constants/path";
 
-export const CardOrders = ({ quantity, subtotal, totalPrice, type }) => {
+export const CardOrders = ({
+  quantity,
+  subtotal,
+  totalPrice,
+  type,
+  postOrders,
+}) => {
   const navigate = useNavigate();
   const handleClickButton = () => {
     if (type === "navigate") {
       navigate(ROUTE.order);
     }
     if (type === "postOrder") {
-      alert("hello world");
+      postOrders();
     }
   };
   return (

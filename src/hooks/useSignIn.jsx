@@ -16,7 +16,8 @@ export const useSignIn = () => {
     try {
       await login(form).unwrap();
     } catch (err) {
-      const errorMessage = err.data?.message || "Произошла ошибка";
+      const errorMessage =
+        err.data?.message || "Неправильный логин или пароль.";
       setErrorText(errorMessage);
     }
   };

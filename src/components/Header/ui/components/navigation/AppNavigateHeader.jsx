@@ -7,9 +7,7 @@ export const AppNavigateHeader = () => {
     <div className={s.containerNavigate}>
       <Link to={ROUTE.home}>Главная </Link>
       <Link to={ROUTE.catalog}>Каталог </Link>
-      <Link to={ROUTE.contacts}>Контакты</Link>
       <Link to={ROUTE.basket}>Корзина</Link>
-      <Link to={ROUTE.about}>О нас</Link>
     </div>
   );
 };
