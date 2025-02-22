@@ -18,12 +18,12 @@
   .button {
     line-height: 17px;
     border: 0;
-    border-bottom: 1px solid #4f68ff;
     background: none;
     cursor: pointer;
 
     a {
       text-decoration: none;
+      border-bottom: 1px solid #4f68ff;
       color: rgb(79, 104, 255);
       font-size: 14px;
       font-weight: 500;
@@ -36,7 +36,18 @@
   }
 }
 
+.loadMoreButton {
+  text-align: center;
+  color: #4f68ff;
+  background-color: transparent;
+  border: none;
+  font-size: 14px;
+  width: 100%;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
 .emptyMessage {
   text-align: center;
   margin-bottom: 40px;
-} 
+}

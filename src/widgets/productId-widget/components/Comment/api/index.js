@@ -6,12 +6,9 @@ export const commentAddApi = $api.injectEndpoints({
       query: ({ product, comments, rating }) => ({
         url: "/product/comment/",
         method: "POST",
-        body: {
-          product: product,
-          comments: comments,
-          rating: rating,
-        },
+        body: { product, comments, rating },
       }),
+      invalidatesTags: ["Comments"],
     }),
   }),
 });

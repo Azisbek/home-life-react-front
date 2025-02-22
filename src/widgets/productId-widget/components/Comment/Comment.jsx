@@ -12,7 +12,7 @@ const Comment = ({ close, refetch }) => {
   const { productId } = useParams();
   const [addProductComment] = useAddProductCommentMutation();
 
-  console.log(productId)
+  console.log(productId);
 
   const handleAddToComment = () => {
     if (comment && rating !== 0) {
@@ -22,6 +22,7 @@ const Comment = ({ close, refetch }) => {
         rating: rating,
       };
       addProductComment(commentData);
+      refetch();
       close(false);
       setComment("");
       setRating(0);
@@ -29,7 +30,7 @@ const Comment = ({ close, refetch }) => {
   };
 
   return (
-    <form className={s.comment}>
+    <form className={s.comment} onSubmit={handleAddToComment}>
       <div id="comment">
         <h2 className={s.title}>Написать свой отзыв</h2>
         <span onClick={() => close(false)}>
@@ -48,7 +49,7 @@ const Comment = ({ close, refetch }) => {
         value={comment}
         onChange={(e) => setComment(e.target.value)}
       ></textarea>
-      <AppButton onClick={handleAddToComment} className={s.btn} type={"submit"}>
+      <AppButton className={s.btn} type={"submit"}>
         Разместить отзыв
       </AppButton>
     </form>
