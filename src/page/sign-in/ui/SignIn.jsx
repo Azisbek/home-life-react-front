@@ -56,6 +56,7 @@ export const SignIn = () => {
             <AppButton className={s.btnSignUp} variant='button'>
               Войти
             </AppButton>
+            <p className={s.errorText}>{errorText}</p>
           </Paper>
         </form>
       </div>

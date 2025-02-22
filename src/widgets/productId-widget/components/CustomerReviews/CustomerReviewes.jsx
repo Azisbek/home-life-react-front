@@ -17,7 +17,6 @@ export const CustomerReviewes = () => {
     { refetchOnMountOrArgChange: false }
   );
 
-
   if (!data || data.length === 0) {
     return (
       <div>
@@ -27,7 +26,7 @@ export const CustomerReviewes = () => {
             className={s.button}
             onClick={() => setOpenComment(!openComment)}
           >
-            <a href="#comment">Написать отзыв</a>
+            <a href='#comment'>Написать отзыв</a>
           </button>
         </div>
 
@@ -45,7 +44,7 @@ export const CustomerReviewes = () => {
           className={s.button}
           onClick={() => setOpenComment(!openComment)}
         >
-          <a href="#comment">Написать отзыв</a>
+          Написать отзыв
         </button>
       </div>
       {data?.map((el, index) => (
