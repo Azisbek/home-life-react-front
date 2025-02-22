@@ -17,7 +17,6 @@ export const CustomerReviewes = () => {
     { refetchOnMountOrArgChange: false }
   );
 
-
   return (
     <div>
       <div className={s.container}>

@@ -15,7 +15,7 @@ export const ProductPage = () => {
   const { productId } = useParams();
   const { isMobile } = useScreenWidth();
 
-  const { data, isLoading, refetch } = useGetCatalogProductIdQuery(
+  const { data, isLoading } = useGetCatalogProductIdQuery(
     { productId },
     { refetchOnMountOrArgChange: false }
   );
@@ -31,7 +31,7 @@ export const ProductPage = () => {
       <Space h={isMobile ? 40 : 90} />
       <Description data={data} />
       <Space h={isMobile ? 40 : 90} />
-      <CustomerReviewes data={data} refetch={refetch} />
+      <CustomerReviewes />
     </div>
   );
 };

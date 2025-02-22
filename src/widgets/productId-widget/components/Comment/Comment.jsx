@@ -12,8 +12,6 @@ const Comment = ({ close, refetch }) => {
   const { productId } = useParams();
   const [addProductComment] = useAddProductCommentMutation();
 
-  console.log(productId);
-
   const handleAddToComment = () => {
     if (comment && rating !== 0) {
       const commentData = {
