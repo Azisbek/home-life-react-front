@@ -32,7 +32,7 @@ export const CustomerReviewes = () => {
       {data?.map((el, index) => (
         <BlockCustomer
           key={index}
-          name={`Name-${index}`}
+          name={el.username}
           date={el.created}
           rating={el.rating}
           comment={el.comments}
