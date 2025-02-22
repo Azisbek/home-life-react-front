@@ -25,7 +25,7 @@ export const CustomerReviewes = () => {
           className={s.button}
           onClick={() => setOpenComment((prev) => !prev)}
         >
-          Написать отзыв
+          <a href="#comment">Написать отзыв</a>
         </button>
       </div>
       {data?.length === 0 && <p className={s.emptyMessage}>Нет отзывов</p>}

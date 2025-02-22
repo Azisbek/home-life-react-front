@@ -4,7 +4,7 @@ export const reviewsProductApi = $api.injectEndpoints({
   endpoints: (build) => ({
     getReviewsProduct: build.query({
       query: ({ id }) => ({
-        url: `/product/comment/${id}/`,
+        url: `/product/${id}/comments/`,
         method: "GET",
       }),
     }),
