@@ -1,6 +1,11 @@
 import { useGetApplicationsQuery } from "./api";
 import s from "./Applications.module.scss";
-import ApplicationsSearch from "./applicationSearch";
+// import ApplicationsSearch from "./applicationSearch";
+
+const role = {
+  customer: "Клиент",
+  wholesaler: "Оптовик",
+};
 
 const Applications = () => {
   const { data } = useGetApplicationsQuery();
@@ -14,16 +19,13 @@ const Applications = () => {
 
   return (
     <div className={s.applications}>
-      <ApplicationsSearch />
+      {/* <ApplicationsSearch /> */}
 
       <table className={s.customers}>
         <thead className={s.thead}>
           <tr>
             <th>
-              <div className={s.idOrder}>
-                <input type="checkbox" />
-                ID заказа
-              </div>
+              <div className={s.idOrder}>ID заказа</div>
             </th>
             <th>Роль</th>
             <th>Пользователь</th>
@@ -37,12 +39,9 @@ const Applications = () => {
           {data?.map((app) => (
             <tr key={app.id}>
               <td>
-                <div className={s.idOrder}>
-                  <input type="checkbox" />
-                  {app.id}
-                </div>
+                <div className={s.idOrder}>{app.id}</div>
               </td>
-              <td>{app.role}</td>
+              <td>{role[app.role]}</td>
               <td>{app.username}</td>
               <td>{formatDate(app.created_at)}</td>
               <td>{app.payment_method}</td>

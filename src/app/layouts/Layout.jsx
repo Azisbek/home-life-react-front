@@ -14,10 +14,10 @@ export const Layout = () => {
       {isMobile ? <MobileHeader /> : <Header />}
       <Space h={30} />
       <main className='container'>
-        <AnimatedWrapper>
-          <Outlet />
-          <OtpCode />
-        </AnimatedWrapper>
+        {/* <AnimatedWrapper> */}
+        <Outlet />
+        <OtpCode />
+        {/* </AnimatedWrapper> */}
       </main>
       <Space h={isMobile ? 50 : 90} />
       <Footer />

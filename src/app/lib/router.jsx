@@ -6,7 +6,6 @@ import { ROUTE } from "../../constants/path";
 import { Layout } from "../layouts/Layout";
 import { meLoader } from "./meLoader";
 import { adminLoader } from "./adminLoader";
-import Archive from "../../page/admin/adminPages/archive/Archive";
 
 // Ленивая загрузка страниц
 const HomePage = lazy(() => import("../../page/home"));
@@ -17,19 +16,25 @@ const SignUp = lazy(() => import("../../page/sign-up"));
 const Basket = lazy(() => import("../../page/basket"));
 const Order = lazy(() => import("../../page/Order"));
 
+const AddBrandPage = lazy(() => import("../../page/admin/page/addBrandPage"));
+
+const Archive = lazy(() => import("../../page/admin/page/archive"));
+
 const AdminLayout = lazy(() => import("../../page/admin/AdminLayout"));
 const AddProductPage = lazy(() =>
-  import("../../page/admin/adminPages/addProductPage")
+  import("../../page/admin/page/addProductPage")
 );
-const AddNewsPage = lazy(() =>
-  import("../../page/admin/adminPages/addNewsPage")
-);
+const AddNewsPage = lazy(() => import("../../page/admin/page/addNewsPage"));
 const Applications = lazy(() =>
-  import("../../page/admin/adminPages/applicationsPage")
+  import("../../page/admin/page/applicationsPage")
 );
 const AllProductsPage = lazy(() =>
-  import("../../page/admin/adminPages/allProductsPage")
+  import("../../page/admin/page/allProductsPage")
 );
+
+const AddCatalog = lazy(() => import("../../page/admin/page/addCatalogPage"));
+
+const Users = lazy(() => import("../../page/admin/page/users"));
 
 export const router = createBrowserRouter([
   {
@@ -54,6 +59,9 @@ export const router = createBrowserRouter([
           { path: ROUTE.applications, element: <Applications /> },
           { path: ROUTE.allProducts, element: <AllProductsPage /> },
           { path: ROUTE.archive, element: <Archive /> },
+          { path: ROUTE.createBrand, element: <AddBrandPage /> },
+          { path: ROUTE.createCategory, element: <AddCatalog /> },
+          { path: ROUTE.users, element: <Users /> },
         ].map((config) => ({
           loader: adminLoader,
           ...config,

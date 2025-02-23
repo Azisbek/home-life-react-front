@@ -28,22 +28,22 @@ const AdminPanel = () => {
           </span>
         </NavLink>
         <NavLink
-          to={ROUTE.createColor}
-          className={({ isActive }) => (isActive ? s.activeLink : "")}
-        >
-          добавить цвет
-        </NavLink>
-        <NavLink
           to={ROUTE.createBrand}
           className={({ isActive }) => (isActive ? s.activeLink : "")}
         >
-          добавить бренд
+          Добавить бренд
+          <span>
+            <PiShoppingCartSimpleBold />
+          </span>
         </NavLink>
         <NavLink
           to={ROUTE.createCategory}
           className={({ isActive }) => (isActive ? s.activeLink : "")}
         >
-          добавить каталог
+          Добавить каталог
+          <span>
+            <PiShoppingCartSimpleBold />
+          </span>
         </NavLink>
         <NavLink
           to={ROUTE.applications}
@@ -72,7 +72,7 @@ const AdminPanel = () => {
           to={ROUTE.users}
           className={({ isActive }) => (isActive ? s.activeLink : "")}
         >
-          пользователи
+          Пользователи
         </NavLink>
       </nav>
     </div>

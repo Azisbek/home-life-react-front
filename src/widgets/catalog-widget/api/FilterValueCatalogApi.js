@@ -21,9 +21,27 @@ export const filterValueCatalogApi = $api.injectEndpoints({
         method: "GET",
       }),
     }),
+
+    postFilterBrands: build.mutation({
+      query: (body) => ({
+        url: "/product/brands/",
+        method: "POST",
+        body,
+      }),
+    }),
+
+    postCatalogBrands: build.mutation({
+      query: (body) => ({
+        url: "/product/categories/",
+        method: "POST",
+        body,
+      }),
+    }),
   }),
 });
 export const {
+  usePostCatalogBrandsMutation,
+  usePostFilterBrandsMutation,
   useGetFilterBrandsQuery,
   useGetFilterCategoriesQuery,
   useGetFilterColorQuery,

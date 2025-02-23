@@ -1,0 +1,25 @@
+.btn {
+  padding: 12px;
+}
+
+.errorText {
+  color: red;
+  font-size: 12px;
+}
+
+.brandList {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .brand {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: rgb(250, 213, 73);
+    border-radius: 10px;
+    font-size: 20px;
+  }
+}
