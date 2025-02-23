@@ -16,7 +16,7 @@ export const ProductItem = ({ data }) => {
   return (
     <div className={s.blockCart}>
       <div className={s.blockImg}>
-        <img src={data?.images[0]} alt='product' />
+        <img src={data?.images[0]} alt="product" />
       </div>
       <div className={s.contentProductCart}>
         <div className={s.starTitleContainer}>
@@ -30,12 +30,15 @@ export const ProductItem = ({ data }) => {
 
         <div className={s.information}>
           <p className={s.title}>{data?.title}</p>
+          {data?.promotion > 0 && (
+            <p className={s.promotion}>{data?.price} сом</p>
+          )}
           <p className={s.price}>
             {data?.promotion ? data?.promotion : data?.price} сом
           </p>
         </div>
 
-        <AppButton onClick={openProductHandler} variant='button'>
+        <AppButton onClick={openProductHandler} variant="button">
           Купить
         </AppButton>
       </div>
