@@ -15,4 +15,8 @@ export const ROUTE = {
   allProducts: "/admin/all-products",
   applications: "/admin/applications",
   archive: "/admin/product/archive/",
+  users: "/admin/users/",
+  createColor: "/admin/color/",
+  createBrand: "/admin/brand",
+  createCategory: "/admin/category/",
 };

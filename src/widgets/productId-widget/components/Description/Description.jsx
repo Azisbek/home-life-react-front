@@ -11,7 +11,7 @@ export const Description = ({ data }) => {
       <h1 className={s.title}>О товаре</h1>
       <Space h={isMobile ? 10 : 70} />
       <div className={s.container}>
-        <BlockDescription title='good' description={data?.description} />
+        <BlockDescription title={data?.title} description={data?.description} />
       </div>
     </div>
   );

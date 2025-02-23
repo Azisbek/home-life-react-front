@@ -49,14 +49,14 @@ export const ViewProduct = ({ data, loading }) => {
             <AppButton
               onClick={closeModal}
               className={s.button}
-              variant="button"
+              variant='button'
             >
               Закрыть
             </AppButton>
             <AppButton
               onClick={() => navigate(ROUTE.basket)}
               className={s.button}
-              variant="button"
+              variant='button'
             >
               Корзина
             </AppButton>
@@ -64,6 +64,7 @@ export const ViewProduct = ({ data, loading }) => {
         </div>
       </CustomModal>
       <h3>Просмотр товара</h3>
+
       <div className={s.aboutProduct}>
         <div>
           <SwipeImage loading={loading} images={data?.images} />
@@ -90,12 +91,13 @@ export const ViewProduct = ({ data, loading }) => {
           <AppButton
             onClick={handleAddToBasket}
             className={s.button}
-            variant="button"
+            variant='button'
           >
             Добавить в корзину
           </AppButton>
         </div>
       </div>
+      <h2>{data?.title}</h2>
     </div>
   );
 };

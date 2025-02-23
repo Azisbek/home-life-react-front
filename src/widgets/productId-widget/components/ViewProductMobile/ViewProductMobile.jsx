@@ -49,14 +49,14 @@ export const ViewProductMobile = ({ data, loading }) => {
             <AppButton
               onClick={closeModal}
               className={s.button}
-              variant="button"
+              variant='button'
             >
               Закрыть
             </AppButton>
             <AppButton
               onClick={() => navigate(ROUTE.basket)}
               className={s.button}
-              variant="button"
+              variant='button'
             >
               Корзина
             </AppButton>
@@ -74,7 +74,6 @@ export const ViewProductMobile = ({ data, loading }) => {
         <p className={s.title}>{data?.brand.title}</p>
         <Space h={15} />
         <div>
-          <p className={s.colorText}>Цвет: {data?.color}</p>
           <Counter add={quantity} setAdd={setQuantity} />
           <Space h={14} />
           <div className={s.colorBlock}>
@@ -89,7 +88,7 @@ export const ViewProductMobile = ({ data, loading }) => {
           <AppButton
             onClick={handleAddToBasket}
             className={s.button}
-            variant="button"
+            variant='button'
           >
             Добавить в корзину
           </AppButton>
