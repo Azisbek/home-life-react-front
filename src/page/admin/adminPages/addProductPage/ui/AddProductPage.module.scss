@@ -3,7 +3,7 @@
   flex-wrap: wrap;
   gap: 60px;
 
-  .characteristick  {
+  .characteristick {
     .block {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -25,10 +25,12 @@
       border-radius: 14px;
       padding: 0 16px;
       font-size: 14px;
+
       ::placeholder {
         color: rgba(119, 119, 118, 1);
       }
     }
+
     .select {
       height: 45px;
       border: none;
@@ -39,6 +41,7 @@
       padding: 0 16px;
       font-size: 14px;
     }
+
     textarea {
       background: rgba(245, 245, 245, 1);
       border: none;
@@ -47,36 +50,57 @@
       padding: 16px;
       height: 125px;
       font-size: 14px;
+
       ::placeholder {
         color: rgba(119, 119, 118, 1);
       }
     }
+
     .label {
       display: flex;
       flex-direction: column;
       gap: 10px;
     }
+
     .btn {
       display: inline;
       width: 30%;
     }
+
     input[type="file"] {
       height: 60px;
       text-align: center;
       padding: 10px;
       width: 100%;
     }
+
     .showshareInput {
       width: 100%;
       display: none;
     }
+
     .addShare {
       color: blue;
       cursor: pointer;
     }
+
     .show {
       display: flex;
       width: 100%;
     }
   }
+}
+
+.successModal {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.error {
+  font-size: 14px;
+  color: rgb(240, 85, 85);
+  margin-bottom: -30px;
 }

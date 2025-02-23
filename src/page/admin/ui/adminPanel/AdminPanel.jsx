@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { ROUTE } from "../../../../constants/path";
 import { PiShoppingCartSimpleBold } from "react-icons/pi";
-import { LuUserPlus2 } from "react-icons/lu";
+import { LuUserPlus } from "react-icons/lu";
 import s from "./AdminPanel.module.scss";
 
 const AdminPanel = () => {
@@ -33,7 +33,7 @@ const AdminPanel = () => {
         >
           Заявки
           <span>
-            <LuUserPlus2 />
+            <LuUserPlus />
           </span>
         </NavLink>
         <NavLink
