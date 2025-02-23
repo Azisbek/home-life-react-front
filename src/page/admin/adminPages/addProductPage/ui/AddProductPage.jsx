@@ -9,11 +9,13 @@ import {
 } from "../../../../../widgets/catalog-widget/api/FilterValueCatalogApi";
 import { useState } from "react";
 import { useAddProductAdminMutation } from "../api";
-import { useSelector } from "react-redux";
+import { required } from "../api/required";
+import { CustomModal } from "../../../../../components/ui/Modal/components/CustomModal";
+import { IoIosCheckmarkCircle } from "react-icons/io";
+import { LoaderScreen } from "../../../../../components/ui/loader-screen/ui/LoaderScreen";
 
 const AddProductPage = () => {
-  const user = useSelector((state) => state.signIn);
-  const [addProduct] = useAddProductAdminMutation();
+  const [addProduct, { isLoading }] = useAddProductAdminMutation();
   const { data: brands } = useGetFilterBrandsQuery();
   const { data: categories } = useGetFilterCategoriesQuery();
   const { data: colors } = useGetFilterColorQuery();
@@ -37,8 +39,39 @@ const AddProductPage = () => {
     main_characteristics: [],
     quantity: 0,
   });
+  const [error, setError] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
 
-  console.log(user.user);
+  const checkEmptyFields = () => {
+    let errors = {};
+
+    for (let key in forms) {
+      if (
+        key !== "is_product_of_the_day" && // Игнорируем чекбоксы
+        key !== "is_active" && // Игнорируем чекбоксы
+        (forms[key] === "" ||
+          forms[key] === null ||
+          (Array.isArray(forms[key]) && forms[key].length === 0))
+      ) {
+        errors[key] = required[key] || `Поле ${key} обязательно для заполнения`;
+      }
+    }
+
+    const imagesCount = [
+      forms.image1,
+      forms.image2,
+      forms.image3,
+      forms.image4,
+      forms.image5,
+    ].filter((image) => image !== null).length;
+
+    if (imagesCount < 3) {
+      errors.image = "Необходимо загрузить хотя бы 3 изображения товара";
+    }
+
+    setError(errors);
+    return Object.keys(errors).length === 0 ? null : errors;
+  };
 
   const handleInputChangeHandler = (key) => (e) => {
     setForm((prev) => ({
@@ -85,6 +118,14 @@ const AddProductPage = () => {
 
   const postSelect = async (e) => {
     e.preventDefault();
+
+    const errors = checkEmptyFields();
+
+    if (errors) {
+      console.log("Форма не прошла валидацию:");
+      return;
+    }
+
     const formData = new FormData();
     Object.keys(forms).forEach((key) => {
       if (key.startsWith("image") && forms[key]) {
@@ -98,175 +139,193 @@ const AddProductPage = () => {
 
     try {
       await addProduct(formData);
+      setIsOpen((prev) => !prev);
       console.log("Продукт успешно добавлен");
     } catch (error) {
       console.error("Ошибка при добавлении продукта:", error);
     }
   };
 
+  if (isLoading) {
+    return <LoaderScreen />;
+  }
+
   return (
-    <form className={s.addProduct}>
-      <div className={s.form}>
-        <Input
-          placeholder='Название товара'
-          className={s.input}
-          onChange={handleInputChangeHandler("title")}
-        />
-        <FilterSelect
-          className={s.select}
-          options={brands || []}
-          defaultValue={"Бренд товара"}
-          onChange={selectChange("brand")}
-        />
-        <FilterSelect
-          className={s.select}
-          options={categories || []}
-          defaultValue={"Модель товара"}
-          onChange={selectChange("category")}
-        />
-        <FilterSelect
-          className={s.select}
-          options={colors || []}
-          defaultValue={"Цвет(а) товара"}
-          onChange={selectChange("color")}
-        />
-        <Input
-          onChange={handleInputChangeHandler("price")}
-          placeholder='Цена товара'
-          className={s.input}
-        />
-        <Input
-          onChange={handleInputChangeHandler("promotion")}
-          placeholder='Скидка'
-          className={s.input}
-        />
+    <>
+      <CustomModal
+        contentClass={s.successModal}
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+      >
+        Продукт успешно отправлено <IoIosCheckmarkCircle size={40} />
+      </CustomModal>
 
-        <h1>Оптовик</h1>
-
-        <Input
-          onChange={handleInputChangeHandler("wholesale_price")}
-          placeholder='Цена товара для оптовиков'
-          className={s.input}
-        />
-        <Input
-          onChange={handleInputChangeHandler("wholesale_promotion")}
-          placeholder='Скидка для оптовиков'
-          className={s.input}
-        />
-      </div>
-
-      <div className={s.description}>
-        <div>
-          <label htmlFor='product-day'>Является ли продуктом дня</label>
+      <form className={s.addProduct}>
+        <div className={s.form}>
+          {error.title && <p className={s.error}>{error.title}</p>}
           <Input
-            id='product-day'
-            type='checkbox'
-            onChange={(e) =>
-              setForm((prev) => ({
-                ...prev,
-                is_product_of_the_day: e.target.checked,
-              }))
-            }
+            placeholder="Название товара"
+            className={s.input}
+            onChange={handleInputChangeHandler("title")}
           />
-          <label htmlFor='active-product'>Продукт активен</label>
+          {error.brand && <p className={s.error}>{error.brand}</p>}
+          <FilterSelect
+            className={s.select}
+            options={brands || []}
+            defaultValue={"Бренд товара"}
+            onChange={selectChange("brand")}
+          />
+          {error.category && <p className={s.error}>{error.category}</p>}
+          <FilterSelect
+            className={s.select}
+            options={categories || []}
+            defaultValue={"Модель товара"}
+            onChange={selectChange("category")}
+          />
+          {error.color && <p className={s.error}>{error.color}</p>}
+          <FilterSelect
+            className={s.select}
+            options={colors || []}
+            defaultValue={"Цвет(а) товара"}
+            onChange={selectChange("color")}
+          />
+          {error.price && <p className={s.error}>{error.price}</p>}
           <Input
-            id='active-product'
-            type='checkbox'
-            onChange={(e) =>
-              setForm((prev) => ({
-                ...prev,
-                is_active: e.target.checked,
-              }))
-            }
+            onChange={handleInputChangeHandler("price")}
+            placeholder="Цена товара"
+            className={s.input}
+          />
+          {error.promotion && <p className={s.error}>{error.promotion}</p>}
+          <Input
+            onChange={handleInputChangeHandler("promotion")}
+            placeholder="Скидка"
+            className={s.input}
           />
 
+          <h1>Оптовик</h1>
+
+          {error.wholesale_price && (
+            <p className={s.error}>{error.wholesale_price}</p>
+          )}
+          <Input
+            onChange={handleInputChangeHandler("wholesale_price")}
+            placeholder="Цена товара для оптовиков"
+            className={s.input}
+          />
+          {error.wholesale_promotion && (
+            <p className={s.error}>{error.wholesale_promotion}</p>
+          )}
+          <Input
+            onChange={handleInputChangeHandler("wholesale_promotion")}
+            placeholder="Скидка для оптовиков"
+            className={s.input}
+          />
+        </div>
+
+        <div className={s.description}>
           <div>
+            <label htmlFor="product-day">Является ли продуктом дня</label>
             <Input
-              onChange={handleInputChangeHandler("quantity")}
-              placeholder='Количество товара'
-              className={s.input}
-              type='number'
+              id="product-day"
+              type="checkbox"
+              onChange={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  is_product_of_the_day: e.target.checked,
+                }))
+              }
             />
+            <label htmlFor="active-product">Продукт активен</label>
+            <Input
+              id="active-product"
+              type="checkbox"
+              onChange={(e) =>
+                setForm((prev) => ({
+                  ...prev,
+                  is_active: e.target.checked,
+                }))
+              }
+            />
+
+            <div>
+              {error.quantity && <p className={s.error}>{error.quantity}</p>}
+              <Input
+                onChange={handleInputChangeHandler("quantity")}
+                placeholder="Количество товара"
+                className={s.input}
+                type="number"
+              />
+            </div>
+          </div>
+
+          {error.description && <p className={s.error}>{error.description}</p>}
+          <textarea
+            onChange={handleInputChangeHandler("description")}
+            placeholder="Описание товара"
+          ></textarea>
+
+          {/* Загрузка изображений */}
+          <div className={s.imageUpload}>
+            {error.image && <p className={s.error}>{error.image}</p>}
+            {["image1", "image2", "image3", "image4", "image5"].map(
+              (imageKey, index) => (
+                <div key={index}>
+                  <label className={s.label}>
+                    {`Изображение ${index + 1}`}
+                    <Input
+                      onChange={handleFileChange(imageKey)}
+                      type="file"
+                      placeholder="Фото товара"
+                      className={s.input}
+                      accept="image/*"
+                    />
+                  </label>
+                </div>
+              )
+            )}
           </div>
         </div>
 
-        <textarea
-          onChange={handleInputChangeHandler("description")}
-          placeholder='Описание товара'
-        ></textarea>
-        <label htmlFor='mainImage' className={s.label}>
-          Главное изображение
-          <Input
-            onChange={handleFileChange("image1")}
-            id='mainImage'
-            name='mainImage'
-            type='file'
-            placeholder='Фото товара'
-            className={s.input}
-            accept='image/*'
-          />
-        </label>
-        {/* Дополнительные изображения */}
-        <Input
-          onChange={handleFileChange("image2")}
-          type='file'
-          placeholder='Фото товара'
-          className={s.input}
-          accept='image/*'
-        />
-        <Input
-          onChange={handleFileChange("image3")}
-          type='file'
-          placeholder='Фото товара'
-          className={s.input}
-          accept='image/*'
-        />
-        <Input
-          onChange={handleFileChange("image4")}
-          type='file'
-          placeholder='Фото товара'
-          className={s.input}
-          accept='image/*'
-        />
-        <Input
-          onChange={handleFileChange("image5")}
-          type='file'
-          placeholder='Фото товара'
-          className={s.input}
-          accept='image/*'
-        />
-      </div>
-
-      <div className={s.characteristick}>
-        <h1>Характеристики</h1>
-        {forms.main_characteristics.map((char, index) => (
-          <div key={index} className={s.block}>
-            <Input
-              onChange={handleInputChangeCharateristickHandler(index, "label")}
-              value={char.label}
-              placeholder='label'
-              className={s.input}
-            />
-            <Input
-              onChange={handleInputChangeCharateristickHandler(index, "value")}
-              value={char.value}
-              placeholder='value'
-              className={s.input}
-            />
-          </div>
-        ))}
-        <AppButton
-          onClick={addCharacteristic}
-          variant='button'
-          className={s.btn}
-        >
-          Добавить характеристику
-        </AppButton>
-        <AppButton onClick={postSelect} variant='button' className={s.btn}>
-          Готово
-        </AppButton>
-      </div>
-    </form>
+        <div className={s.characteristick}>
+          <h1>Характеристики</h1>
+          {error.main_characteristics && (
+            <p className={s.error}>{error.main_characteristics}</p>
+          )}
+          {forms.main_characteristics.map((char, index) => (
+            <div key={index} className={s.block}>
+              <Input
+                onChange={handleInputChangeCharateristickHandler(
+                  index,
+                  "label"
+                )}
+                value={char.label}
+                placeholder="label"
+                className={s.input}
+              />
+              <Input
+                onChange={handleInputChangeCharateristickHandler(
+                  index,
+                  "value"
+                )}
+                value={char.value}
+                placeholder="value"
+                className={s.input}
+              />
+            </div>
+          ))}
+          <AppButton
+            onClick={addCharacteristic}
+            variant="button"
+            className={s.btn}
+          >
+            Добавить характеристику
+          </AppButton>
+          <AppButton onClick={postSelect} variant="button" className={s.btn}>
+            Готово
+          </AppButton>
+        </div>
+      </form>
+    </>
   );
 };
 
