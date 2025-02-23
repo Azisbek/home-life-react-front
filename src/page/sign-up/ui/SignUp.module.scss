@@ -45,6 +45,7 @@
     .checkboxContainer {
       display: flex;
       gap: 10px;
+      align-items: center;
 
       .checkboxLabel {
         white-space: nowrap;
@@ -53,6 +54,7 @@
 
     .select {
       width: 100%;
+      height: 46px;
       border-radius: 14px;
     }
 

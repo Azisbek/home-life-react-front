@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import s from "./Comment.module.scss";
 import { IoClose } from "react-icons/io5";
 import { Rating } from "react-simple-star-rating";
@@ -29,7 +29,7 @@ const Comment = ({ close, refetch }) => {
 
   return (
     <form className={s.comment} onSubmit={handleAddToComment}>
-      <div id="comment">
+      <div id='comment'>
         <h2 className={s.title}>Написать свой отзыв</h2>
         <span onClick={() => close(false)}>
           <IoClose />
