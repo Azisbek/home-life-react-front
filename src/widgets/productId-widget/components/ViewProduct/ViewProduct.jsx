@@ -49,14 +49,14 @@ export const ViewProduct = ({ data, loading }) => {
             <AppButton
               onClick={closeModal}
               className={s.button}
-              variant='button'
+              variant="button"
             >
               Закрыть
             </AppButton>
             <AppButton
               onClick={() => navigate(ROUTE.basket)}
               className={s.button}
-              variant='button'
+              variant="button"
             >
               Корзина
             </AppButton>
@@ -80,14 +80,17 @@ export const ViewProduct = ({ data, loading }) => {
           <div className={s.color}>
             <div style={{ background: data?.color }} />
           </div>
-          <p>{data?.promotion ? data.promotion : data?.price}</p>
+          {data?.promotion > 0 && (
+            <p className={s.promotion}>{data?.price} сом</p>
+          )}
+          <p>{data?.promotion ? data.promotion : data?.price} сом</p>
           <Space h={30} />
           <Counter add={quantity} setAdd={setQuantity} />
           <Space h={40} />
           <AppButton
             onClick={handleAddToBasket}
             className={s.button}
-            variant='button'
+            variant="button"
           >
             Добавить в корзину
           </AppButton>
