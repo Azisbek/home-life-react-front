@@ -5,6 +5,7 @@ import "../../styles/global.scss";
 import { useScreenWidth } from "../../hooks/useScreenWidth";
 import { Space } from "../../components/ui/Space/Space";
 import { Footer } from "../../components/Footer/Footer";
+import { OtpCode } from "../../components/OtpCode";
 
 export const Layout = () => {
   const { isMobile } = useScreenWidth();
@@ -15,6 +16,7 @@ export const Layout = () => {
       <main className='container'>
         <AnimatedWrapper>
           <Outlet />
+          <OtpCode />
         </AnimatedWrapper>
       </main>
       <Space h={isMobile ? 50 : 90} />

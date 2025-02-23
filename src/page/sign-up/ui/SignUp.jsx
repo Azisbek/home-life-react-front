@@ -64,7 +64,7 @@ export const SignUp = () => {
 
   return (
     <>
-      <ModalSuccessSignUp isOpen={authResponse.isSuccess && showModal} />
+      <ModalSuccessSignUp isOpen={authResponse.isSuccess && !form.wholesaler} />
       <div className={s.titleBlock}>
         <h3>Зарегистрироваться</h3>
         <Space h={8} />

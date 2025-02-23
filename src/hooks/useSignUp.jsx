@@ -24,11 +24,9 @@ export const useSignUp = () => {
   };
 
   const onSubmit = async () => {
-    console.log(form);
-
     try {
       const response = await auth(form).unwrap();
-      if (response) {
+      if (response?.message) {
         updateShowModal(true);
       }
     } catch (err) {
