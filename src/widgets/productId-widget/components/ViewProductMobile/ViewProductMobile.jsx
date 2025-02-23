@@ -49,14 +49,14 @@ export const ViewProductMobile = ({ data, loading }) => {
             <AppButton
               onClick={closeModal}
               className={s.button}
-              variant='button'
+              variant="button"
             >
               Закрыть
             </AppButton>
             <AppButton
               onClick={() => navigate(ROUTE.basket)}
               className={s.button}
-              variant='button'
+              variant="button"
             >
               Корзина
             </AppButton>
@@ -81,12 +81,15 @@ export const ViewProductMobile = ({ data, loading }) => {
             <div style={{ background: data?.color }} />
           </div>
           <Space h={22} />
-          <p>{data?.promotion ? data.promotion : data?.price}сом</p>
+          {data?.promotion > 0 && (
+            <p className={s.promotion}>{data?.price} сом</p>
+          )}
+          <p>{data?.promotion ? data.promotion : data?.price} сом</p>
           <Space h={10} />
           <AppButton
             onClick={handleAddToBasket}
             className={s.button}
-            variant='button'
+            variant="button"
           >
             Добавить в корзину
           </AppButton>
