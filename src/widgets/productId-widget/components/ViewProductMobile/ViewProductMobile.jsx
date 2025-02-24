@@ -9,11 +9,13 @@ import { Counter } from "../../../../components/ui/Counter/Counter";
 import { CustomModal } from "../../../../components/ui/Modal/components/CustomModal";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "../../../../constants/path";
+import { LoaderScreen } from "../../../../components/ui/loader-screen";
 
 export const ViewProductMobile = ({ data, loading }) => {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
-  const [addProductBasket, { isSuccess }] = useAddProductBasketMutation();
+  const [addProductBasket, { isLoading, isSuccess }] =
+    useAddProductBasketMutation();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   useEffect(() => {
@@ -36,6 +38,14 @@ export const ViewProductMobile = ({ data, loading }) => {
     setIsOpenModal(false);
   };
 
+  if (isLoading) {
+    return (
+      <div className={s.loadingContainer}>
+        <LoaderScreen />;
+      </div>
+    );
+  }
+
   return (
     <div className={s.container}>
       <CustomModal
@@ -49,14 +59,14 @@ export const ViewProductMobile = ({ data, loading }) => {
             <AppButton
               onClick={closeModal}
               className={s.button}
-              variant='button'
+              variant="button"
             >
               Закрыть
             </AppButton>
             <AppButton
               onClick={() => navigate(ROUTE.basket)}
               className={s.button}
-              variant='button'
+              variant="button"
             >
               Корзина
             </AppButton>
@@ -88,7 +98,7 @@ export const ViewProductMobile = ({ data, loading }) => {
           <AppButton
             onClick={handleAddToBasket}
             className={s.button}
-            variant='button'
+            variant="button"
           >
             Добавить в корзину
           </AppButton>

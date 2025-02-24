@@ -6,11 +6,13 @@ import { Space } from "../../../../components/ui/Space/Space";
 import { useScreenWidth } from "../../../../hooks/useScreenWidth";
 import { useGetReviewsProductQuery } from "./api";
 import { useParams } from "react-router-dom";
+import { LoaderComment } from "../../../../components/ui/LoaderComment/LoaderComment";
 
 export const CustomerReviewes = () => {
   const { productId } = useParams();
   const { isMobile } = useScreenWidth();
   const [openComment, setOpenComment] = useState(false);
+  const [isLoading, setIsLoading] = useState(); // Через callback берем из Comment
 
   const { data, refetch } = useGetReviewsProductQuery(
     { id: productId },
@@ -28,7 +30,9 @@ export const CustomerReviewes = () => {
           <a href="#comment">Написать отзыв</a>
         </button>
       </div>
+
       {data?.length === 0 && <p className={s.emptyMessage}>Нет отзывов</p>}
+
       {data?.map((el, index) => (
         <BlockCustomer
           key={index}
@@ -38,8 +42,18 @@ export const CustomerReviewes = () => {
           comment={el.comments}
         />
       ))}
+
+      {isLoading && <LoaderComment />}
+
       <Space h={isMobile ? 40 : 90} />
-      {openComment && <Comment close={setOpenComment} refetch={refetch} />}
+
+      {openComment && (
+        <Comment
+          close={setOpenComment}
+          refetch={refetch}
+          setIsLoading={setIsLoading}
+        />
+      )}
     </div>
   );
 };

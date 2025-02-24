@@ -17,16 +17,16 @@
       flex-direction: column;
       gap: 30px;
 
-      .buttonContainer{
+      .buttonContainer {
         display: flex;
         justify-content: center;
         gap: 20px;
 
-        .button{
+        .button {
           padding: 20px;
         }
       }
-      
+
 
       .text {
         text-align: center;
@@ -93,4 +93,13 @@
       padding: 12px;
     }
   }
+}
+
+.loadingContainer {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
