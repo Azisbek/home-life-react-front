@@ -7,7 +7,7 @@ export const HomePromotion = ({ img, loading }) => {
       {loading ? (
         <Skeleton className={s.skeleton} />
       ) : (
-        <img src={img} alt='banner' />
+        <img src={img} alt='banner' loading='lazy' />
       )}
     </div>
   );

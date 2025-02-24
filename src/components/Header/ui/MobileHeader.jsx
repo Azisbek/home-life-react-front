@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import logo from "../../../assets/Logo.png";
+import logo from "../../../assets/Logo.webp";
 import { Input } from "../../ui/Input";
 import { useDispatch } from "react-redux";
 import { useState } from "react";

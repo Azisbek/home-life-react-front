@@ -1,6 +1,6 @@
 import { AppNavigateHeader } from "./components/navigation/AppNavigateHeader";
 import { Input } from "../../../components/ui/Input";
-import logo from "../../../assets/Logo.png";
+import logo from "../../../assets/Logo.webp";
 import { Search } from "../../../assets/icon/Search";
 
 import clsx from "clsx";
