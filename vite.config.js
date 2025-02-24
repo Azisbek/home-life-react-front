@@ -10,6 +10,9 @@ const srcPath = path.resolve(__dirname, "./src");
 
 export default defineConfig({
   plugins: [react()],
+  build: {
+    ssr: false,
+  },
   server: {
     host: true,
     port: 3000,
