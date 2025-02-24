@@ -3,7 +3,16 @@ import { $api } from "../../../constants/service/api";
 export const catalogApi = $api.injectEndpoints({
   endpoints: (build) => ({
     getCatalogProduct: build.query({
-      query: ({ category, brand, color, price_min, price_max, search }) => ({
+      query: ({
+        category,
+        brand,
+        color,
+        price_min,
+        price_max,
+        search,
+        page = 1,
+        limit = 12,
+      }) => ({
         url: "/product/all/",
         method: "GET",
         params: {
@@ -13,6 +22,8 @@ export const catalogApi = $api.injectEndpoints({
           color,
           price_min,
           price_max,
+          page,
+          limit,
         },
       }),
     }),
