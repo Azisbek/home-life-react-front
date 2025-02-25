@@ -15,6 +15,7 @@ export default defineConfig({
     outDir: "dist",
     sourcemap: false,
   },
+  base: "/",
   server: {
     host: true,
     port: 3000,
