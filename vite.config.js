@@ -14,6 +14,7 @@ export default defineConfig({
     ssr: false,
     outDir: "dist",
     sourcemap: false,
+    emptyOutDir: true,
   },
   base: "/",
   server: {
