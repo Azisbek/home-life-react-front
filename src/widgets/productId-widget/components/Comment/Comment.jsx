@@ -60,7 +60,7 @@ const Comment = ({ close, refetch, setIsLoading }) => {
 
       <Rating
         className={s.rating}
-        size={22}
+        size={34}
         onClick={(rate) => setRating(rate)}
         initialValue={rating}
         allowFraction={false}

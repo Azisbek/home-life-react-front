@@ -84,7 +84,7 @@ export const ViewProduct = ({ data, loading }) => {
           <Rating
             size={26}
             initialValue={data?.avg_rating}
-            allowFraction={false}
+            allowFraction={true}
             readonly={true}
           />
           <p className={s?.colorText}>Цвета</p>
