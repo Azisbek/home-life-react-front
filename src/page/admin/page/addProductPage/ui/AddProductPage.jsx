@@ -46,6 +46,9 @@ const AddProductPage = () => {
     let errors = {};
 
     for (let key in forms) {
+      if (key === "quantity" && forms[key] <= 0) {
+        errors[key] = "Укажите количество товара";
+      }
       if (
         key !== "is_product_of_the_day" && // Игнорируем чекбоксы
         key !== "is_active" && // Игнорируем чекбоксы
@@ -53,20 +56,8 @@ const AddProductPage = () => {
           forms[key] === null ||
           (Array.isArray(forms[key]) && forms[key].length === 0))
       ) {
-        errors[key] = required[key] || `Поле ${key} обязательно для заполнения`;
+        errors[key] = required[key];
       }
-    }
-
-    const imagesCount = [
-      forms.image1,
-      forms.image2,
-      forms.image3,
-      forms.image4,
-      forms.image5,
-    ].filter((image) => image !== null).length;
-
-    if (imagesCount < 3) {
-      errors.image = "Необходимо загрузить хотя бы 3 изображения товара";
     }
 
     setError(errors);
@@ -147,7 +138,11 @@ const AddProductPage = () => {
   };
 
   if (isLoading) {
-    return <LoaderScreen />;
+    return (
+      <div className={s.loadingContainer}>
+        <LoaderScreen />;
+      </div>
+    );
   }
 
   return (
@@ -266,10 +261,12 @@ const AddProductPage = () => {
 
           {/* Загрузка изображений */}
           <div className={s.imageUpload}>
-            {error.image && <p className={s.error}>{error.image}</p>}
             {["image1", "image2", "image3", "image4", "image5"].map(
               (imageKey, index) => (
                 <div key={index}>
+                  {error[imageKey] && (
+                    <p className={s.error}>{error[imageKey]}</p>
+                  )}
                   <label className={s.label}>
                     {`Изображение ${index + 1}`}
                     <Input

@@ -9,11 +9,13 @@ import { useEffect, useState } from "react";
 import { CustomModal } from "../../../../components/ui/Modal/components/CustomModal";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "../../../../constants/path";
+import { LoaderScreen } from "../../../../components/ui/loader-screen";
 
 export const ViewProduct = ({ data, loading }) => {
   const navigate = useNavigate();
   const [quantity, setQuantity] = useState(1);
-  const [addProductBasket, { isSuccess }] = useAddProductBasketMutation();
+  const [addProductBasket, { isLoading, isSuccess }] =
+    useAddProductBasketMutation();
   const [isOpenModal, setIsOpenModal] = useState(false);
 
   useEffect(() => {
@@ -36,6 +38,14 @@ export const ViewProduct = ({ data, loading }) => {
     setIsOpenModal(false);
   };
 
+  if (isLoading) {
+    return (
+      <div className={s.loadingContainer}>
+        <LoaderScreen />;
+      </div>
+    );
+  }
+
   return (
     <div className={s.container}>
       <CustomModal
@@ -49,14 +59,14 @@ export const ViewProduct = ({ data, loading }) => {
             <AppButton
               onClick={closeModal}
               className={s.button}
-              variant='button'
+              variant="button"
             >
               Закрыть
             </AppButton>
             <AppButton
               onClick={() => navigate(ROUTE.basket)}
               className={s.button}
-              variant='button'
+              variant="button"
             >
               Корзина
             </AppButton>
@@ -74,7 +84,7 @@ export const ViewProduct = ({ data, loading }) => {
           <Rating
             size={26}
             initialValue={data?.avg_rating}
-            allowFraction={true}
+            allowFraction={false}
             readonly={true}
           />
           <p className={s?.colorText}>Цвета</p>
@@ -91,7 +101,7 @@ export const ViewProduct = ({ data, loading }) => {
           <AppButton
             onClick={handleAddToBasket}
             className={s.button}
-            variant='button'
+            variant="button"
           >
             Добавить в корзину
           </AppButton>

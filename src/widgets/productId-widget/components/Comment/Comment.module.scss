@@ -50,4 +50,18 @@
     line-height: 19px;
     cursor: pointer;
   }
+
+  .errorText {
+    font-size: 14px;
+    color: rgb(240, 85, 85);
+    margin-top: 10px;
+    margin-bottom: -10px;
+  }
+}
+
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
