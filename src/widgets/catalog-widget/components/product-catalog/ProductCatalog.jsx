@@ -8,25 +8,26 @@ import { useScreenWidth } from "../../../../hooks/useScreenWidth";
 import { AppButton } from "../../../../components/ui/Button";
 import { useState } from "react";
 import { CustomModal } from "../../../../components/ui/Modal/components/CustomModal";
+import { Pagination } from "../../../../components/pagination/Pagination";
 
 export const ProductCatalog = () => {
   const [isOpenFilter, setOpenFilter] = useState(false);
   const filters = useSelector((state) => state.filters);
-  const { data, isLoading } = useGetCatalogProductQuery(filters, {
-    refetchOnMountOrArgChange: true,
-  });
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data, isLoading } = useGetCatalogProductQuery(
+    { ...filters, page: currentPage, limit: 12 },
+    { refetchOnMountOrArgChange: true }
+  );
 
   const { isMobile } = useScreenWidth();
 
-  const openModalFilter = () => {
-    setOpenFilter(true);
-  };
+  const openModalFilter = () => setOpenFilter(true);
 
   return (
     <div className={clsx(s.container)}>
       {isMobile ? (
         <div className={s.mobileContainer}>
-          <AppButton variant='button' onClick={openModalFilter}>
+          <AppButton variant="button" onClick={openModalFilter}>
             Фильтр
           </AppButton>
           <CustomModal
@@ -42,18 +43,37 @@ export const ProductCatalog = () => {
           <ProductList
             loading={isLoading}
             data={data?.results}
-            quantitySkeleton={8}
+            quantitySkeleton={12}
+          />
+
+          <Pagination
+            totalCount={data?.count}
+            itemsPerPage={12}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
         </div>
       ) : (
-        <>
-          <FilterProduct />
-          <ProductList
-            loading={isLoading}
-            data={data?.results}
-            quantitySkeleton={8}
-          />
-        </>
+        <div className={s.desctopContainer}>
+          <div className={s.container}>
+            <FilterProduct />
+
+            <ProductList
+              loading={isLoading}
+              data={data?.results}
+              quantitySkeleton={12}
+            />
+          </div>
+
+          <div className={s.paginationContainer}>
+            <Pagination
+              totalCount={data?.count}
+              itemsPerPage={12}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          </div>
+        </div>
       )}
     </div>
   );

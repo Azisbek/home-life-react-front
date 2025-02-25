@@ -2,12 +2,22 @@
   width: 100%;
   display: flex;
   gap: 78px;
+  justify-content: flex-start;
 
   .mobileContainer {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
+  }
+
+  .desctopContainer {
+    width: 100%;
+    display: grid;
+
+    .paginationContainer {
+      margin-left: 300px;
+    }
   }
 }
 

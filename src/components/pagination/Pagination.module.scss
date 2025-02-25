@@ -1,0 +1,41 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+
+  .paginationContent {
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .arrowBtn {
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    &:hover {
+      .icon {
+        color: orange;
+      }
+    }
+  }
+
+  .paginationButton,
+  .active {
+    font-family: monospace;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+    border: 1px solid #f6f6f6;
+    background: #f6f6f6;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+
+  .active {
+    border: 1px solid rgb(250, 213, 73);
+    background-color: rgb(250, 213, 73);
+    pointer-events: none;
+  }
+}
