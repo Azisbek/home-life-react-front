@@ -24,8 +24,6 @@ export const ViewProduct = ({ data, loading }) => {
     }
   }, [isSuccess]);
 
-  console.log(data);
-
   const handleAddToBasket = () => {
     if (data) {
       const basketData = {
