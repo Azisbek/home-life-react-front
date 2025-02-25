@@ -12,6 +12,8 @@ export default defineConfig({
   plugins: [react()],
   build: {
     ssr: false,
+    outDir: "dist",
+    sourcemap: false,
   },
   server: {
     host: true,
