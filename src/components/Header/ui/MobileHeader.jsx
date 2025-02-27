@@ -41,7 +41,7 @@ export function MobileHeader() {
   return (
     <>
       <header className={clsx(s.containerHeader, "container")}>
-        <img className={s.logo} src={logo} alt='logo' />
+        <img className={s.logo} src={logo} alt="logo" />
 
         <Space h={5} />
         <div className={s.headerSearch}>
@@ -66,9 +66,7 @@ export function MobileHeader() {
         <div className={s.navigateMobileContainer}>
           <p onClick={() => navigationPathHandler(ROUTE.home)}>Главная</p>
           <p onClick={() => navigationPathHandler(ROUTE.catalog)}>Каталог </p>
-          <p onClick={() => navigationPathHandler(ROUTE.contacts)}>Контакты</p>
           <p onClick={() => navigationPathHandler(ROUTE.basket)}>Корзина</p>
-          <p onClick={() => navigationPathHandler(ROUTE.about)}>О нас</p>
           <p onClick={() => navigationPathHandler(ROUTE.signIn)}>Войти</p>
         </div>
       </ModalRight>
