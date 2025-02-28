@@ -24,4 +24,53 @@
     flex-direction: column;
     gap: 20px;
   }
+
+  .emptyCartContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+    text-align: center;
+
+    .emptyCartImg {
+      opacity: 0.7;
+      animation: float 3s infinite ease-in-out;
+    }
+
+    h2 {
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    p {
+      color: gray;
+      margin-top: 5px;
+    }
+
+    .btn {
+      font-weight: 500;
+      margin-top: 20px;
+      color: black;
+      background-color: rgb(250, 213, 73);
+      padding: 10px 14px;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
