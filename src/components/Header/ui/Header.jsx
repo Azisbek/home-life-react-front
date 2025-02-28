@@ -7,7 +7,7 @@ import clsx from "clsx";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFilter } from "../../../widgets/catalog-widget/components/filter-catalog/model/filter.slice";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "../../../constants/path";
 import { AppButton } from "../../ui/Button";
 import s from "./Header.module.scss";
@@ -31,9 +31,9 @@ export const Header = () => {
 
   return (
     <header className={clsx("container", s.containerHeader)}>
-      <div>
-        <img src={logo} alt='logo' className={s.logo} />
-      </div>
+      <Link to={ROUTE.base}>
+        <img src={logo} alt="logo" className={s.logo} />
+      </Link>
 
       <div className={s.containerInput}>
         <Input
@@ -49,7 +49,7 @@ export const Header = () => {
       <AppButton
         onClick={() => navigate(ROUTE.signUp)}
         className={s.buttonSingUp}
-        variant='button'
+        variant="button"
       >
         Зарегистрироваться
       </AppButton>

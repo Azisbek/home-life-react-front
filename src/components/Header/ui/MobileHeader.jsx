@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "../../../assets/Logo.webp";
 import { Input } from "../../ui/Input";
 import { useDispatch } from "react-redux";
@@ -41,7 +41,9 @@ export function MobileHeader() {
   return (
     <>
       <header className={clsx(s.containerHeader, "container")}>
-        <img className={s.logo} src={logo} alt="logo" />
+        <Link to={ROUTE.base}>
+          <img className={s.logo} src={logo} alt="logo" />
+        </Link>
 
         <Space h={5} />
         <div className={s.headerSearch}>
