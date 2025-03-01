@@ -1,7 +1,8 @@
 export function lockScroll(isOpen = true) {
   if (isOpen) {
     document.body.classList.add("lock-scroll");
-  } else {
+  } 
+  else {
     document.body.classList.remove("lock-scroll");
   }
 }
