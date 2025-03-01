@@ -19,6 +19,7 @@ export const HomePage = () => {
           loading={isLoading}
           img={data?.homepage?.banner?.image}
         />
+
         <HomeProductDay
           loading={isLoading}
           data={data?.homepage.product_of_the_day}
