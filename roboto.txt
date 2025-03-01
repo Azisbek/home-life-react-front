@@ -5,38 +5,28 @@ Disallow: /cart/
 Disallow: /profile/
 Disallow: /order/
 Disallow: /checkout/
-Disallow: /wishlist/
 Disallow: /private/
 Disallow: /about/
 Disallow: /contacts/
-Disallow: /admin/add-products/
-Disallow: /admin/add-news/
-Disallow: /admin/all-products/
-Disallow: /admin/applications/
-Disallow: /admin/product/archive/
-Disallow: /admin/users/
-Disallow: /admin/color/
-Disallow: /admin/brand/
-Disallow: /admin/category/
-Allow: /
+
+# Запрет индексации динамических параметров
+Disallow: /*?*
+Disallow: /*sort=
+Disallow: /*page=
+Disallow: /*filter=
+Disallow: /*search=
 
 Sitemap: https://homelive.kg/sitemap.xml
 
-# Ускорение индексации для поисковых систем
+# Разрешение для поисковых систем
 User-agent: Googlebot
 Allow: /
 
 User-agent: Bingbot
 Allow: /
 
-# Запрет индексации динамических параметров
-Disallow: /*?*
-
-# Запрет индексации страниц с фильтрами и пагинацией
-Disallow: /*sort=
-Disallow: /*page=
-Disallow: /*filter=
-Disallow: /*search=
-
-# Указание задержки для краулеров
+# Указание задержки для краулеров (10 секунд между запросами)
 Crawl-delay: 10
+
+# Для Яндекса
+Host: https://homelive.kg

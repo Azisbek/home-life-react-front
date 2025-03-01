@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./Pagination.module.scss";
 import { FaCaretLeft } from "react-icons/fa6";
 import { FaCaretRight } from "react-icons/fa6";
