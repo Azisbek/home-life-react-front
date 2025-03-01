@@ -28,11 +28,13 @@ export const HomePage = () => {
       <Space h={80} />
 
       <HomeList loading={isLoading} title='Новинки' data={data?.homepage.new} />
+
       <HomeList
         loading={isLoading}
         title='Популярные'
         data={data?.homepage.popular}
       />
+
       <HomeList
         loading={isLoading}
         title='Акции'
