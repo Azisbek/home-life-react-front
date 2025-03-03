@@ -9,6 +9,7 @@ import { AppButton } from "../../../../components/ui/Button";
 import { useState } from "react";
 import { CustomModal } from "../../../../components/ui/Modal/components/CustomModal";
 import { Pagination } from "../../../../components/pagination/Pagination";
+import { PiEmptyBold } from "react-icons/pi";
 
 export const ProductCatalog = () => {
   const [isOpenFilter, setOpenFilter] = useState(false);
@@ -22,6 +23,8 @@ export const ProductCatalog = () => {
   const { isMobile } = useScreenWidth();
 
   const openModalFilter = () => setOpenFilter(true);
+
+  const isDataEmpty = data?.results?.length === 0;
 
   return (
     <div className={clsx(s.container)}>
@@ -40,11 +43,21 @@ export const ProductCatalog = () => {
             </div>
           </CustomModal>
 
-          <ProductList
-            loading={isLoading}
-            data={data?.results}
-            quantitySkeleton={12}
-          />
+          {isLoading ? (
+            <ProductList loading={isLoading} quantitySkeleton={12} />
+          ) : isDataEmpty ? (
+            <div className={s.emptyCartContainer}>
+              <PiEmptyBold size={100} className={s.emptyCartImg} />
+              <h2>Товары не найдены</h2>
+              <p>Извините, в данный момент в каталоге нет товаров.</p>
+            </div>
+          ) : (
+            <ProductList
+              loading={isLoading}
+              data={data?.results}
+              quantitySkeleton={12}
+            />
+          )}
 
           <Pagination
             totalCount={data?.count}
@@ -58,11 +71,21 @@ export const ProductCatalog = () => {
           <div className={s.container}>
             <FilterProduct />
 
-            <ProductList
-              loading={isLoading}
-              data={data?.results}
-              quantitySkeleton={12}
-            />
+            {isLoading ? (
+              <ProductList loading={isLoading} quantitySkeleton={12} />
+            ) : isDataEmpty ? (
+              <div className={s.emptyCartContainer}>
+                <PiEmptyBold size={100} className={s.emptyCartImg} />
+                <h2>Товары не найдены</h2>
+                <p>Извините, в данный момент в каталоге нет товаров.</p>
+              </div>
+            ) : (
+              <ProductList
+                loading={isLoading}
+                data={data?.results}
+                quantitySkeleton={12}
+              />
+            )}
           </div>
 
           <div className={s.paginationContainer}>
