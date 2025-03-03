@@ -8,6 +8,7 @@ import { ROUTE } from "../../../constants/path";
 import { Space } from "../../../components/ui/Space/Space";
 import { useSignUp } from "../../../hooks/useSignUp";
 import { ModalSuccessSignUp } from "../../../components/ModalSuccessSignUp";
+import { LoaderScreen } from "../../../components/ui/loader-screen/ui/LoaderScreen";
 import s from "./SignUp.module.scss";
 
 export const SignUp = () => {
@@ -62,6 +63,14 @@ export const SignUp = () => {
     }));
   };
 
+  if (authResponse.isLoading) {
+    return (
+      <div className={s.loadingContainer}>
+        <LoaderScreen />;
+      </div>
+    );
+  }
+
   return (
     <>
       <ModalSuccessSignUp isOpen={authResponse.isSuccess && !form.wholesaler} />
@@ -76,15 +85,15 @@ export const SignUp = () => {
       <form onSubmit={handleSubmit} className={s.form}>
         <Paper className={s.paper}>
           <Input
-            name='name'
-            placeholder='Ваше Имя*'
+            name="name"
+            placeholder="Ваше Имя*"
             onChange={inputChangeHandler}
           />
           {errors.name && <span className={s.error}>{errors.name}</span>}
 
           <Input
-            name='username'
-            placeholder='Имя пользователя*'
+            name="username"
+            placeholder="Имя пользователя*"
             onChange={inputChangeHandler}
           />
           {errors.username && (
@@ -92,27 +101,27 @@ export const SignUp = () => {
           )}
 
           <Input
-            name='email'
-            placeholder='Ваш Email*'
-            type='email'
+            name="email"
+            placeholder="Ваш Email*"
+            type="email"
             onChange={inputChangeHandler}
           />
           {errors.email && <span className={s.error}>{errors.email}</span>}
 
           <Input
-            name='number'
+            name="number"
             onChange={inputChangeHandler}
-            placeholder='Ваш номер*'
-            type='number'
+            placeholder="Ваш номер*"
+            type="number"
           />
           {errors.number && <span className={s.error}>{errors.number}</span>}
 
           <Input
-            name='password'
-            type='password'
+            name="password"
+            type="password"
             rightOnClick={passwordHandler}
             onChange={inputChangeHandler}
-            placeholder='Ваш пароль*'
+            placeholder="Ваш пароль*"
           />
           {errors.password && (
             <span className={s.error}>{errors.password}</span>
@@ -121,7 +130,7 @@ export const SignUp = () => {
           <div className={s.smallForm}>
             <FilterSelect
               className={s.select}
-              defaultValue='Выберите пол'
+              defaultValue="Выберите пол"
               onChange={(value) =>
                 setForm((prev) => ({ ...prev, gender: value }))
               }
@@ -131,21 +140,21 @@ export const SignUp = () => {
               ]}
             />
             <Input
-              name='age'
+              name="age"
               onChange={inputChangeHandler}
-              type='number'
-              placeholder='Возраст'
+              type="number"
+              placeholder="Возраст"
             />
             <div className={s.checkboxContainer}>
               <Input
-                type='checkbox'
-                name='wholesaler'
+                type="checkbox"
+                name="wholesaler"
                 onChange={inputChangeHandler}
               />
               <label className={s.checkboxLabel}>Я оптовый покупатель</label>
             </div>
           </div>
-          <AppButton className={s.btnSignUp} variant='button'>
+          <AppButton className={s.btnSignUp} variant="button">
             Зарегистрироваться
           </AppButton>
         </Paper>

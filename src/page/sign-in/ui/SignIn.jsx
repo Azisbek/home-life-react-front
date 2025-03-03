@@ -7,6 +7,7 @@ import { Space } from "../../../components/ui/Space/Space";
 import { useSignIn } from "../../../hooks/useSignIn";
 import s from "./SignIn.module.scss";
 import { ModalSuccessSignIn } from "../../../components/ModalSuccessSignIn";
+import { LoaderScreen } from "../../../components/ui/loader-screen/ui/LoaderScreen";
 
 export const SignIn = () => {
   const { setForm, onSubmit, errorText, loginResponse } = useSignIn();
@@ -18,6 +19,14 @@ export const SignIn = () => {
       [name]: value,
     }));
   };
+
+  if (loginResponse.isLoading) {
+    return (
+      <div className={s.loadingContainer}>
+        <LoaderScreen />;
+      </div>
+    );
+  }
 
   return (
     <>
@@ -34,19 +43,19 @@ export const SignIn = () => {
         <form onSubmit={onSubmit} className={s.form}>
           <Paper className={s.paper}>
             <Input
-              name='email'
-              placeholder='Ваш Email*'
-              type='email'
+              name="email"
+              placeholder="Ваш Email*"
+              type="email"
               onChange={inputChangeHandler}
             />
 
             <Input
-              name='password'
-              type='password'
-              placeholder='Ваш пароль*'
+              name="password"
+              type="password"
+              placeholder="Ваш пароль*"
               onChange={inputChangeHandler}
             />
-            <AppButton className={s.btnSignUp} variant='button'>
+            <AppButton className={s.btnSignUp} variant="button">
               Войти
             </AppButton>
             <p className={s.errorText}>{errorText}</p>
