@@ -13,7 +13,7 @@
 }
 
 .profileMainLoader .loader::before {
-  content: '';
+  content: "";
   display: block;
   padding-top: 100%;
 }
@@ -32,9 +32,7 @@
 .loaderPath {
   stroke-dasharray: 150, 200;
   stroke-dashoffset: -10;
-  animation:
-    dash 1.5s ease-in-out infinite,
-    color 6s ease-in-out infinite;
+  animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
   stroke-linecap: round;
 }
 
@@ -44,29 +42,6 @@
   }
 }
 
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-
-  50% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -35;
-  }
-
-  100% {
-    stroke-dasharray: 89, 200;
-    stroke-dashoffset: -124;
-  }
-}
-
 @keyframes dash {
   0% {
     stroke-dasharray: 1, 200;
@@ -86,39 +61,20 @@
 
 @keyframes color {
   0% {
-    stroke: #70c542;
+    stroke: rgb(250, 213, 73);
   }
 
   40% {
-    stroke: #70c542;
+    stroke: rgb(250, 213, 73);
   }
 
   66% {
-    stroke: #70c542;
+    stroke: rgb(250, 213, 73);
   }
 
   80%,
   90% {
-    stroke: #70c542;
-  }
-}
-
-@keyframes color {
-  0% {
-    stroke: #70c542;
-  }
-
-  40% {
-    stroke: #70c542;
-  }
-
-  66% {
-    stroke: #70c542;
-  }
-
-  80%,
-  90% {
-    stroke: #70c542;
+    stroke: rgb(250, 213, 73);
   }
 }
 

@@ -109,7 +109,7 @@ export const SignUp = () => {
 
           <Input
             name='password'
-            type={password ? "password" : "text"}
+            type='password'
             rightOnClick={passwordHandler}
             onChange={inputChangeHandler}
             placeholder='Ваш пароль*'

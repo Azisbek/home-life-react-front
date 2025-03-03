@@ -31,6 +31,10 @@
     gap: 20px;
     border: 1px solid;
 
+    .error {
+      color: red;
+    }
+
     .btnSignUp {
       width: 60%;
       margin: 0 auto;

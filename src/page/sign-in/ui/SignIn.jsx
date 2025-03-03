@@ -2,7 +2,6 @@ import { Input } from "../../../components/ui/Input";
 import { Paper } from "../../../components/ui/Paper";
 import { Link } from "react-router-dom";
 import { ROUTE } from "../../../constants/path";
-import { useState } from "react";
 import { AppButton } from "../../../components/ui/Button";
 import { Space } from "../../../components/ui/Space/Space";
 import { useSignIn } from "../../../hooks/useSignIn";
@@ -10,12 +9,7 @@ import s from "./SignIn.module.scss";
 import { ModalSuccessSignIn } from "../../../components/ModalSuccessSignIn";
 
 export const SignIn = () => {
-  const [password, setPassword] = useState(false);
   const { setForm, onSubmit, errorText, loginResponse } = useSignIn();
-
-  const passwordHandler = () => {
-    setPassword(!password);
-  };
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -48,8 +42,7 @@ export const SignIn = () => {
 
             <Input
               name='password'
-              type={password ? "password" : "text"}
-              rightOnClick={passwordHandler}
+              type='password'
               placeholder='Ваш пароль*'
               onChange={inputChangeHandler}
             />
