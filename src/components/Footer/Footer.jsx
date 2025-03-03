@@ -22,21 +22,21 @@ export const Footer = () => {
           <div className={s.box}>
             {/* <img className={s.icon} src={whatsapp} alt='whatsapp' /> */}
             <div className={s.number}>
-              <span>0500743440</span>
-              <span>0770161681</span>
+              <span>0500-74-34-40</span>
+              <span>0220-39-22-97</span>
             </div>
           </div>
           <div className={s.box}>
             {/* <img className={s.icon} src={telegram} alt='telegram' /> */}
             <div className={s.number}>
-              <span>0771743440</span>
+              <span>0507-42-03-11</span>
             </div>
           </div>
         </div>
-        <span>Abdivaliev.2017@gmail.com</span>
+        <span>homelife.0305@gmail.com</span>
       </div>
 
-     {role === "admin" && <Link to={ROUTE.admin}>ADMIN</Link>}
+      {role === "admin" && <Link to={ROUTE.admin}>ADMIN</Link>}
     </footer>
   );
 };

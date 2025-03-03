@@ -8,9 +8,17 @@ import { useSignIn } from "../../../hooks/useSignIn";
 import s from "./SignIn.module.scss";
 import { ModalSuccessSignIn } from "../../../components/ModalSuccessSignIn";
 import { LoaderScreen } from "../../../components/ui/loader-screen/ui/LoaderScreen";
+import { LuEye } from "react-icons/lu";
+import { LuEyeOff } from "react-icons/lu";
+import { useState } from "react";
 
 export const SignIn = () => {
   const { setForm, onSubmit, errorText, loginResponse } = useSignIn();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword((prev) => !prev);
+  };
 
   const inputChangeHandler = (e) => {
     const { name, value } = e.target;
@@ -51,9 +59,18 @@ export const SignIn = () => {
 
             <Input
               name="password"
-              type="password"
+              type={showPassword ? "text" : "password"}
               placeholder="Ваш пароль*"
               onChange={inputChangeHandler}
+              rightIcon={
+                <button
+                  type="button"
+                  className={s.btnShowPassword}
+                  onClick={togglePasswordVisibility}
+                >
+                  {showPassword ? <LuEyeOff size={24} /> : <LuEye size={24} />}
+                </button>
+              }
             />
             <AppButton className={s.btnSignUp} variant="button">
               Войти

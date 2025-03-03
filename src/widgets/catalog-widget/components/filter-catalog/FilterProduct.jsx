@@ -66,7 +66,7 @@ export const FilterProduct = () => {
         placeholder='Select Color'
       />
       <FilterSelect
-        defaultValue='Брент'
+        defaultValue='Бренд'
         onChange={handleFilterChange("brand")}
         options={brands || []}
         placeholder='Select Brand'
