@@ -16,7 +16,7 @@ Disallow: /*page=
 Disallow: /*filter=
 Disallow: /*search=
 
-Sitemap: https://homelive.kg/sitemap.xml
+Sitemap: https://homelife.kg/sitemap.xml
 
 # Разрешение для поисковых систем
 User-agent: Googlebot
@@ -29,4 +29,4 @@ Allow: /
 Crawl-delay: 10
 
 # Для Яндекса
-Host: https://homelive.kg
+Host: https://homelife.kg
