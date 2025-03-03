@@ -25,9 +25,9 @@ const AddProductPage = () => {
     category: "",
     color: "",
     price: "",
-    promotion: "",
+    promotion: 0,
     wholesale_price: "",
-    wholesale_promotion: "",
+    wholesale_promotion: 0,
     description: "",
     image1: null,
     image2: null,
@@ -52,6 +52,8 @@ const AddProductPage = () => {
       if (
         key !== "is_product_of_the_day" && // Игнорируем чекбоксы
         key !== "is_active" && // Игнорируем чекбоксы
+        key !== "promotion" &&
+        key !== "wholesale_promotion" &&
         (forms[key] === "" ||
           forms[key] === null ||
           (Array.isArray(forms[key]) && forms[key].length === 0))
@@ -190,7 +192,6 @@ const AddProductPage = () => {
             placeholder="Цена товара"
             className={s.input}
           />
-          {error.promotion && <p className={s.error}>{error.promotion}</p>}
           <Input
             onChange={handleInputChangeHandler("promotion")}
             placeholder="Скидка"
@@ -207,9 +208,6 @@ const AddProductPage = () => {
             placeholder="Цена товара для оптовиков"
             className={s.input}
           />
-          {error.wholesale_promotion && (
-            <p className={s.error}>{error.wholesale_promotion}</p>
-          )}
           <Input
             onChange={handleInputChangeHandler("wholesale_promotion")}
             placeholder="Скидка для оптовиков"
