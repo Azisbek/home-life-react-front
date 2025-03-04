@@ -39,7 +39,7 @@ export const ProductCatalog = () => {
           >
             <div className={s.filterContent}>
               <p className={s.titleModal}>Фильтр</p>
-              <FilterProduct />
+              <FilterProduct setOpenFilter={setOpenFilter} />
             </div>
           </CustomModal>
 

@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux";
 import { AppButton } from "../../../../components/ui/Button";
 import { setFilter, resetFilters } from "../filter-catalog/model/filter.slice";
 
-export const FilterProduct = () => {
+export const FilterProduct = ({ setOpenFilter }) => {
   const dispatch = useDispatch();
   const { data: brands } = useGetFilterBrandsQuery();
   const { data: categories } = useGetFilterCategoriesQuery();
@@ -36,8 +36,9 @@ export const FilterProduct = () => {
     dispatch(setFilter({ key: "category", value: filters.category }));
     dispatch(setFilter({ key: "color", value: filters.color }));
     dispatch(setFilter({ key: "brand", value: filters.brand }));
-    dispatch(setFilter({ key: "price_min", value: priceMin }));
-    dispatch(setFilter({ key: "price_max", value: priceMax }));
+    dispatch(setFilter({ key: "priceMin", value: priceMin }));
+    dispatch(setFilter({ key: "priceMax", value: priceMax }));
+    setOpenFilter?.(false);
   };
 
   const handleResetFilters = () => {
@@ -48,41 +49,51 @@ export const FilterProduct = () => {
       priceMin: "",
       priceMax: "",
     });
-    dispatch(resetFilters());
+
+    if (priceMinRef.current) priceMinRef.current.value = "";
+    if (priceMaxRef.current) priceMaxRef.current.value = "";
+
+    dispatch(resetFilters(filters));
+    setOpenFilter?.(false);
   };
+
+  console.log(filters);
 
   return (
     <div className={s.filterContainer}>
       <FilterSelect
-        defaultValue='Категории'
+        value={filters.category}
+        defaultValue="Категории"
         onChange={handleFilterChange("category")}
         options={categories || []}
-        placeholder='Select Category'
+        placeholder="Select Category"
       />
       <FilterSelect
-        defaultValue='Цвет'
+        value={filters.color}
+        defaultValue="Цвет"
         onChange={handleFilterChange("color")}
         options={colors || []}
-        placeholder='Select Color'
+        placeholder="Select Color"
       />
       <FilterSelect
-        defaultValue='Бренд'
+        value={filters.brand}
+        defaultValue="Бренд"
         onChange={handleFilterChange("brand")}
         options={brands || []}
-        placeholder='Select Brand'
+        placeholder="Select Brand"
       />
 
       <input
-        placeholder='Максимальная цена'
-        type='number'
+        placeholder="Максимальная цена"
+        type="number"
         ref={priceMaxRef}
-        name='price_min'
+        name="price_min"
       />
       <input
-        placeholder='Минимальная цена'
-        type='number'
+        placeholder="Минимальная цена"
+        type="number"
         ref={priceMinRef}
-        name='price_max'
+        name="price_max"
       />
       <AppButton onClick={handleApplyFilters}>Применить</AppButton>
       <AppButton onClick={handleResetFilters}>Сбросить</AppButton>
