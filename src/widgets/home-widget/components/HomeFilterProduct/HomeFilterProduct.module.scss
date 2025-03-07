@@ -11,11 +11,19 @@
     gap: 16px;
 
     .listItemFilter {
+      cursor: pointer;
       color: rgb(0, 0, 0);
       font-size: 16px;
       font-weight: 400;
       line-height: 20px;
       border-bottom: 1px solid rgb(210, 210, 209);
     }
+  }
+
+  .btn {
+    color: orange;
+    margin-top: 20px;
+    border: none;
+    background-color: transparent;
   }
 }

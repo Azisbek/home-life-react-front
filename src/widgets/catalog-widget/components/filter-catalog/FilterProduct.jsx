@@ -57,8 +57,6 @@ export const FilterProduct = ({ setOpenFilter }) => {
     setOpenFilter?.(false);
   };
 
-  console.log(filters);
-
   return (
     <div className={s.filterContainer}>
       <FilterSelect
